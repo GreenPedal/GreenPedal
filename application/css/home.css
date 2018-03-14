@@ -1,0 +1,368 @@
+﻿.rightbox {
+    float: right;
+    font-size: 150%;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 10px solid black;
+    background-color: white;
+    width: 30%;
+    border-radius: 25px;
+    height: auto;
+    margin-top: 20%;
+    margin-right: 10%;
+    padding: 10px 10px;
+}
+
+.leftbox {
+    font-size: 150%;
+    font-family: Arial, Helvetica, sans-serif;
+    float: left;
+    border: 10px solid black;
+    background-color: white;
+    width: 30%;
+    border-radius: 25px;
+    height: auto;
+    margin-top: 20%;
+    margin-left: 10%;
+    padding: 10px 10px;
+}
+
+.PicBox {
+    height: auto;
+    width: auto;
+}
+
+.GreenBox {
+    height: auto;
+    border-radius: 25px;
+    border: 10px solid black;
+    background-color: #228B22;
+}
+
+BlackBox {
+    height: auto;
+    background-color: black;
+}
+
+.GrayS {
+    color: black;
+    opacity: 0.8;
+    filter: grayscale(100%);
+    transition: transform .2s;
+}
+
+    .GrayS:hover {
+        opacity: 1;
+        filter: grayscale(0%);
+        color: Green;
+    }
+
+.left {
+    float: left;
+    width: 30%;
+}
+
+.right {
+    float: right;
+    width: 60%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.left1 {
+    float: left;
+    width: 60%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.right1 {
+    float: right;
+    width: 30%;
+}
+
+.fpwords {
+    color: white;
+    font-size: 200%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.bottomwords {
+    color: white;
+    font-size: 200%;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding: 16% 10px 10px 10px;
+}
+
+.compmargin {
+    font-size: 200%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.homefooter {
+    width: auto;
+}
+
+.PhoneButtones {
+    display: none;
+}
+
+.PhoneButtones2 {
+    display: none;
+}
+
+.greenwords {
+    display: none;
+}
+
+.Buttoncall {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.greenwords1 {
+    display: none;
+}
+
+
+fadeleft {
+    font-size: 300%;
+    position: absolute;
+    bottom: 10%;
+    color: transparent;
+    -webkit-animation-name: left; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 5s; /* Safari 4.0 - 8.0 */
+    -webkit-animation-iteration-count: infinite; /* Safari 4.0 - 8.0 */
+    -webkit-animation-delay: 10s;
+    animation-name: left;
+    animation-duration: 24s;
+    animation-iteration-count: infinite;
+    animation-delay: 3s;
+}
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes left {
+    0% {
+        color: white;
+        left: 10px
+    }
+
+    10% {
+        color: white;
+        transform: rotateZ(30deg);
+        left: 10px
+    }
+
+    12% {
+        color: white;
+        transform: rotateZ(-30deg);
+        left: 42%
+    }
+
+    15% {
+        color: white;
+        transform: rotateZ(0deg);
+        left: 42%
+    }
+
+    18% {
+        color: white;
+        transform: rotateZ(0deg);
+        left: 42%
+    }
+
+    20% {
+        color: transparent;
+        transform: rotateZ(0deg);
+        left: 42%
+    }
+
+    22% {
+        color: white;
+        transform: rotateZ(0deg);
+        left: 42%
+    }
+
+    24% {
+        color: transparent;
+        transform: rotateZ(0deg);
+        left: 42%
+    }
+}
+/* Standard syntax */
+@keyframes left {
+    0% {
+        color: white;
+        left: 10px
+    }
+
+    10% {
+        color: white;
+        transform: rotateZ(30deg);
+        left: 10px
+    }
+
+    12% {
+        color: white;
+        transform: rotateZ(-30deg);
+        left: 42%
+    }
+
+    15% {
+        color: white;
+        transform: rotateZ(0deg);
+        left: 42%
+    }
+
+    18% {
+        color: white;
+        transform: rotateZ(0deg);
+        left: 42%
+    }
+
+    20% {
+        color: transparent;
+        transform: rotateZ(0deg);
+        left: 42%
+    }
+
+    22% {
+        color: white;
+        transform: rotateZ(0deg);
+        left: 42%
+    }
+
+    24% {
+        color: transparent;
+        transform: rotateZ(0deg);
+        left: 42%
+    }
+}
+
+faderight {
+    font-size: 300%;
+    color: transparent;
+    position: absolute;
+    bottom: 10%;
+    -webkit-animation-name: right; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 5s; /* Safari 4.0 - 8.0 */
+    -webkit-animation-iteration-count: infinite; /* Safari 4.0 - 8.0 */
+    -webkit-animation-delay: 10s;
+    animation-name: right;
+    animation-duration: 24s;
+    animation-iteration-count: infinite;
+    animation-delay: 3s;
+}
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes right {
+    0% {
+        color: white;
+        left: 90%
+    }
+
+    10% {
+        color: white;
+        transform: rotateZ(-30deg);
+        left: 90%
+    }
+
+    12% {
+        color: white;
+        transform: rotateZ(30deg);
+        left: 51%
+    }
+
+    15% {
+        color: white;
+        transform: rotateZ(0deg);
+        left: 51%
+    }
+
+    18% {
+        color: transparent;
+        transform: rotateZ(0deg);
+        left: 51%
+    }
+
+    20% {
+        color: white;
+        transform: rotateZ(0deg);
+        left: 51%
+    }
+
+    22% {
+        color: transparent;
+        transform: rotateZ(0deg);
+        left: 51%
+    }
+
+    24% {
+        color: white;
+        transform: rotateZ(0deg);
+        left: 51%
+    }
+
+    25% {
+        color: transparent;
+        transform: rotateZ(0deg);
+        left: 51%
+    }
+}
+/* Standard syntax */
+@keyframes right {
+    0% {
+        color: white;
+        left: 90%
+    }
+
+    10% {
+        color: white;
+        transform: rotateZ(-30deg);
+        left: 90%
+    }
+
+    12% {
+        color: white;
+        transform: rotateZ(30deg);
+        left: 51%
+    }
+
+    15% {
+        color: white;
+        transform: rotateZ(0deg);
+        left: 51%
+    }
+
+    18% {
+        color: transparent;
+        transform: rotateZ(0deg);
+        left: 51%
+    }
+
+    20% {
+        color: white;
+        transform: rotateZ(0deg);
+        left: 51%
+    }
+
+    22% {
+        color: transparent;
+        transform: rotateZ(0deg);
+        left: 51%
+    }
+
+    24% {
+        color: white;
+        transform: rotateZ(0deg);
+        left: 51%
+    }
+
+    25% {
+        color: transparent;
+        transform: rotateZ(0deg);
+        left: 51%
+    }

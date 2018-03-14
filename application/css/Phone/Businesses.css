@@ -1,0 +1,90 @@
+﻿@media screen and (max-width:600px){
+.PhoneNoShow{
+display:none;
+    }
+.sosbox{
+width:100vw;
+}
+.buslogo {
+    margin-top:0;
+        float: none;
+        width: 100vw;
+        height: auto;
+    }
+.left3{
+display:none;
+}
+.motto {
+    position:center;
+    font-weight: bold;
+    font-size:30vw, 30px;
+    text-decoration:none;
+	color:#ffffff;
+}
+.beContainer {
+    color:black;
+    position: center;
+	background-color:black;
+  width:100%;
+  margin-right:0;
+      margin-left:0;
+  height:auto;
+  padding: 0px 0px;
+}
+.sosimage {
+    border-radius: 25px;   
+    border: 5px solid black;
+      padding: 5px;
+       width: 10vw;
+
+}
+.BusImages {
+    border-radius: 25px;   
+    border: 5px solid black;
+       width: 70vw;
+
+}
+a{
+        text-decoration:none;
+
+}
+.buttonclass{
+	float:left;	
+
+}
+.button{
+    height:10vh;
+     width:40vw;
+           }
+.Gray {
+      opacity: 1;
+   filter: grayscale(100%);
+     font-size: 20px;
+    font-weight: bold;
+    transition: transform .2s;
+    margin: 0 auto;
+}
+.BusesImages {
+    border-radius: 25px;   
+    border: 5px solid black;
+      padding: 2px;
+       width: 100vw;
+       height:auto;
+       margin-left:0%;
+
+}
+.busAbout {
+        display: none;
+    }
+.listCon {
+        color:white;
+        margin-top: 2vw;
+        float: left;
+        text-decoration: none;
+    }
+.whitetext {
+        color: white;
+        font-size:25px;
+    }
+}
+

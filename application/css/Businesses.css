@@ -1,0 +1,145 @@
+﻿.Gray {
+      opacity: 0.8;
+   filter: grayscale(100%);
+     font-size: 20px;
+    font-weight: bold;
+    transition: transform .2s;
+    margin: 0 auto;
+}
+.Gray:hover {
+      opacity: .9;
+     filter: grayscale(0%);
+	color:Green;
+    font-size: 20px;
+    font-weight: bold;
+	font-family:Arial, Helvetica, sans-serif;
+   
+}
+.BusName {
+    margin-top: 10vw;
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration: none;
+    color: #ffffff;
+}
+.sosimage {
+    border-radius: 25px;
+    border: 5px solid black;
+    padding: 5px;
+    width: 5vw;
+}
+.BusImages {
+    border-radius: 25px;   
+    border: 5px solid black;
+      padding: 5px;
+       width: 20vw;
+
+}
+.BusesImages {
+    border-radius: 25px;   
+    border: 5px solid black;
+      padding: 5px;
+       width: 10vw;
+
+}
+.item {
+	margin-bottom:10px;
+    margin-top:20vh;
+	float:left;	
+}
+.motto {
+    font-weight: bold;
+    font-size:30px;
+    text-decoration:none;
+	color:#ffffff;
+}
+.busAbout{
+    margin-top:2vw;
+    display:block;
+}
+.listCon{
+    margin-top:2vw;
+	float:left;	
+    text-decoration:none;
+}
+.buttonclass{
+    width:100%;
+    margin-top:2%;
+	float:left;	
+
+}
+.container {
+    color:white;
+  width:60%;
+  margin-right:20%;
+      margin-left:20%;
+  height:auto;
+}
+.whitetext {
+    color:white;
+    font-size: 18px;
+}
+.proCon {
+    color: white;
+    width: 100vw;
+    height: auto;
+    padding: 20px 20px;
+}
+.beContainer {
+	color:white;
+  width:60%;
+  margin-right:20%;
+      margin-left:20%;
+  height:auto;
+  padding: 20px 20px;
+}
+.buslogo {
+    margin-top:17vh;
+    width: 30%;
+}
+MainP{
+    font-size:27px;
+    font-weight: bold;
+}
+mp{
+    font-size:18px;
+}
+price{
+    font-size:20px;
+}
+a:link {
+    text-decoration: none;
+    color:white;
+}
+a:visited {
+    text-decoration: none;
+        color:white;
+
+}
+a:hover {
+        color:Green;
+}
+a:active {
+        color:white;
+}
+.Sobox{
+    width:20%;
+    height:auto;
+    left:5%;
+}
+PhoneShow{
+     display:none
+}
+a{
+        text-decoration:none;
+}
+.button{
+    height:10vh;
+     width:20vw;
+           }
+.PhoneNoShow{
+width:100%;
+    }
+.sosbox{
+    width:100vw;
+}

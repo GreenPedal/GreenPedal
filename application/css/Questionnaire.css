@@ -1,0 +1,83 @@
+﻿.textbox {
+  background-color: black;
+      border-radius: 25px;
+      border: 5px solid black;
+      width: 50%;
+  margin-left:25%;
+  margin-right:25%;
+    border: 1px solid black;
+      padding: 10px 10px;
+
+    }
+.column {  
+     float: left;
+    width: 50%;
+
+}
+QHeavy{
+        font-size:180%;
+          color: white;
+           font-weight: bold;
+           
+}
+QLight{
+        font-size:125%;
+          color: white;
+}
+.qbox{
+        margin-top:20%;
+}
+.PhoneShow{
+        display:none;
+        }
+
+@media screen and (max-width:600px){
+.PhoneNoShow{
+        display:none;
+    }
+.PhoneShow{
+            font-size:100%; 
+            display:block;
+        }
+a{
+        text-decoration:none;
+
+}
+.PhoneButtones{
+            font-size:15vh;
+            color:white;
+            text-align:center;
+            height:auto;
+            width:100vw;
+            margin-top:10vh;
+    background-color:green;
+
+}
+.PhoneButtones2{
+            font-size:15vh;
+            color:black;
+            text-align:center;
+            height:auto;
+            width:100vw;
+    background-color: chartreuse;
+
+}
+.column {  
+     float: none;
+    width: 100%;
+}
+.textbox {
+  background-color: black;
+      border-radius: 25px;
+      border: 5px solid black;
+      width: 100%;
+  margin-left:0%;
+  margin-right:0%;
+    border: 1px solid black;
+      padding: 5px 5px;
+
+    }
+
+}
+
+

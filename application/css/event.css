@@ -1,0 +1,44 @@
+﻿.box {
+    margin-top:20%;
+    float: right;
+     border: 10px solid black;
+    	color:black;
+    background-color:white;
+  width:100%;
+     border-radius: 25px;
+  height:auto;
+  padding: 10px 10px;
+}
+.logo {
+
+	float:left;
+    padding: 0px 5px;
+}
+.image {
+    border-radius: 25px;   
+    border: 5px solid black;
+  display: block;
+}
+.margin{
+    margin-left:10%;
+    margin-right:10%;
+}
+.margin2{
+    margin-left:5%;
+    margin-right:5%;
+}
+
+.column{
+    float:left;
+    width:50%;
+    background-color:black;
+}
+.wordbox{
+    margin-bottom:5px;
+    margin-top:5px;
+}
+EP1 {
+	font-family:Arial, Helvetica, sans-serif;
+    font-size: 25px;
+}
+

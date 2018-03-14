@@ -1,0 +1,39 @@
+﻿.Avebox {
+    float: right;
+     border: 10px solid black;
+    	color:black;
+        font-size:150%;
+    background-color:white;
+  width:45%;
+  margin-right:10%;
+      margin-left:45%;
+     border-radius: 50px;
+  height:auto;
+  margin-top:300px;
+  padding: 10px 10px;
+}
+h2b {
+    position:center;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 170%;
+	font-weight: bold;
+    text-decoration: underline;
+}
+h4b {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 30px;
+    color:white;
+	font-weight: bold;
+}
+p1{
+        position:center;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 24px;
+    color:white;
+}
+.avemargin{
+    margin-left:20%;
+    margin-right:20%;
+}
+
+
