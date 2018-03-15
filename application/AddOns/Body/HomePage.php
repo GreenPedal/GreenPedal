@@ -74,7 +74,7 @@
           GreenPedal
           <p>831</p>
         </div>
-        <div class="greenwords1">
+        <div class="phonelongo">
           <img height="100%" src="images/PagePics/blackGreenPedalLogo.jpg" alt="Home" />
           </img>
         </div>
