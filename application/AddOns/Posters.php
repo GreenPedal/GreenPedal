@@ -8,20 +8,24 @@
   ?>
 <div class="margin">
     <div class="Gray">
-      <?php do { ?>
+      <?php 
+	  do{
+	  ?>
       <a href="<?php echo $Posters_rs['website']; ?>">
-<img  class="PosterImage" src="images/PoasterPics/<?php echo $Posters_rs ['pic']; ?>" />
+        <img  class="PosterImage" src="images/PoasterPics/<?php echo $Posters_rs ['pic']; ?>" />
         </img>
       </a>
     </div>
-  </div>
     <div class="Gray">
       <a href="
-        <?php echo $Posters_rs['website']; ?>">	 <?php
-	} while ($Posters_rs=mysqli_fetch_assoc($Posters_query)) ?>
+        <?php
+		 echo $Posters_rs['website']; 
+		?>">	
+		<?php
+	     } while ($Posters_rs=mysqli_fetch_assoc($Posters_query))
+	    ?>
       </a>
     </div>
-  </div>
 </div>
 
 
