@@ -1,8 +1,4 @@
 ﻿@media screen and (max-width:372px) {
-    PhoneShow {
-        font-size: 100%;
-        background-color: green;
-    }
     .PicBox {
         display: none;
     }
@@ -61,7 +57,7 @@
         font-size: 10vh;
         color: white;
         text-align: center;
-        height: 33vh;
+        height: 20vh;
         width: 100vw;
         margin-top: 0vh;
         background-color: green;
@@ -71,105 +67,82 @@
         font-size: 10vh;
         color: black;
         text-align: center;
-        height: 33vh;
+        height: 20vh;
         width: 100vw;
         background-color: chartreuse;
         display: block;
     }
 }
 @media screen and (max-height:522px) {
-    PhoneShow {
-        font-size: 100%;
-        background-color: green;
-    }
-
     .PicBox {
         display: none;
     }
-
     fadeleft {
         display: none;
     }
-
     faderight {
         display: none;
     }
-
     .parallax {
         display: none;
     }
-
     .parallax1 {
         display: none;
     }
-
     .parallaxEvent {
         display: none;
     }
-
     .parallaxLogo {
         display: none;
     }
-
     .bottomwords {
         display: none;
     }
-
     .homefooter {
         display: none;
     }
-
     .BlackBox {
         display: none;
     }
-
     .GrayS {
         display: none;
     }
-
     a {
         text-decoration: none;
     }
-
     .Buttoncall {
         float: none;
         width: 100%;
         display: block;
     }
-
     .GreenBox {
         display: none;
     }
-
     .greenwords {
         display: none;
     }
-
     .greenwords2 {
         display: none;
     }
-
     .phonelongo {
         height: 30vh;
         display: block;
     }
-
     .PhoneButtones {
         font-size: 10vh;
         color: white;
         text-align: center;
-        height: 33vh;
+        height: 20vh;
         width: 100vw;
         margin-top: 0vh;
         background-color: green;
         display: block;
     }
-
     .PhoneButtones2 {
         font-size: 10vh;
         color: black;
         text-align: center;
-        height: 33vh;
+        height: 20vh;
         width: 100vw;
         background-color: chartreuse;
         display: block;
