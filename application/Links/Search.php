@@ -1,83 +1,159 @@
-﻿<?php
-$conn = mysql_connect("localhost", "root", "") or die(mysql_error());
-mysql_select_db("greenpedal831") or die(mysql_error());
-?>
+﻿<!DOCTYPE html >
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title>Creating a Store Locator on Google Maps</title>
+  <style>
+    /* Always set the map height explicitly to define the size of the div
+     * element that contains the map. */
+    #map {
+      height: 100%;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+ </style>
+  </head>
+  <body style="margin:0px; padding:0px;" onload="initMap()">
+    <div><select id="locationSelect" style="width: 10%; visibility: hidden"></select></div>
+    <div id="map" style="width: 100%; height: 90%"></div>
+    <script>
+      var map;
+      var markers = [];
+      var infoWindow;
+      var locationSelect;
 
-<html>
-<head>
-<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-<title>Google Maps</title>
-<style type="text/css">
-  body { font: normal 10pt Helvetica, Arial; }
-	#map { width: 1200px; height: 800px; border: 0px; padding: 0px; }
-</style>
+        function initMap() {
+          var sydney = {lat: 36.606216, lng: -121.898460};
+          map = new google.maps.Map(document.getElementById('map'), {
+            center: sydney,
+            zoom: 11,
+            mapTypeId: 'roadmap',
+            mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
+          });
+          infoWindow = new google.maps.InfoWindow();
 
-<script src="http://maps.google.com/maps/api/js?key=AIzaSyAAteFqg8f7tYTPgZ0tCUeXp&sensor=false" type="text/javascript"></script>
-<script type="text/javascript">
-	//Borrowed the code from http://stackoverflow.com/questions/15633604/php-mysql-google-map
-	var icon = new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/micons/blue.png",
-			   new google.maps.Size(32, 32), new google.maps.Point(0, 0),
-			   new google.maps.Point(16, 32));
-	var center = null;
-	var map = null;
-	var currentPopup;
-	var bounds = new google.maps.LatLngBounds();
-	function addMarker(lat, lng) {
-		var pt = new google.maps.LatLng(lat, lng);
-		bounds.extend(pt);
-		var marker = new google.maps.Marker({
-			position: pt,
-			icon: icon,
-			map: map
-		});
-		var popup = new google.maps.InfoWindow({
-			content: info,
-			maxWidth: 300
-		});
-		google.maps.event.addListener(marker, "click", function() {
-			if (currentPopup != null) {
-				currentPopup.close();
-				currentPopup = null;
-			}
-			popup.open(map, marker);
-			currentPopup = popup;
-		});
-		google.maps.event.addListener(popup, "closeclick", function() {
-			map.panTo(center);
-			currentPopup = null;
-		});
-	}           
-	function initMap() {
-		map = new google.maps.Map(document.getElementById("map"), {
-			center: new google.maps.LatLng(0, 0),
-			zoom: 14,
-			mapTypeId: google.maps.MapTypeId.ROADMAP,
-			mapTypeControl: true,
-			mapTypeControlOptions: {
-				style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR
-			},
-			navigationControl: true,
-			navigationControlOptions: {
-				style: google.maps.NavigationControlStyle.ZOOM_PAN
-			}
-		});
-<?php
-$query = mysql_query("SELECT * FROM businesses")or die(mysql_error());
-while($row = mysql_fetch_array($query))
-{
-  $name = $row['tst'];
-  $lat = $row['lat'];
-  $lng = $row['lng'];
-  echo("addMarker($lat, $lng, '<b>$name</b>);
-}
-?>
- center = bounds.getCenter();
-     map.fitBounds(bounds);
-     }
- </script>
- 
- </head>
- <body onload="initMap()" style="margin:0px; border:0px; padding:0px;">
- <div id="map"></div>
- </body>
- </html>
+          searchButton = document.getElementById("searchButton").onclick = searchLocations;
+
+          locationSelect = document.getElementById("locationSelect");
+          locationSelect.onchange = function() {
+            var markerNum = locationSelect.options[locationSelect.selectedIndex].value;
+            if (markerNum != "none"){
+              google.maps.event.trigger(markers[markerNum], 'click');
+            }
+          };
+        }
+
+       function searchLocations() {
+         var address = document.getElementById("addressInput").value;
+         var geocoder = new google.maps.Geocoder();
+         geocoder.geocode({address: address}, function(results, status) {
+           if (status == google.maps.GeocoderStatus.OK) {
+            searchLocationsNear(results[0].geometry.location);
+           } else {
+             alert(address + ' not found');
+           }
+         });
+       }
+
+       function clearLocations() {
+         infoWindow.close();
+         for (var i = 0; i < markers.length; i++) {
+           markers[i].setMap(null);
+         }
+         markers.length = 0;
+
+         locationSelect.innerHTML = "";
+         var option = document.createElement("option");
+         option.value = "none";
+         option.innerHTML = "See all results:";
+         locationSelect.appendChild(option);
+       }
+
+       function searchLocationsNear(center) {
+         clearLocations();
+
+         var radius = document.getElementById('radiusSelect').value;
+         var searchUrl = 'storelocator.php?lat=' + center.lat() + '&lng=' + center.lng() + '&radius=' + radius;
+         downloadUrl(searchUrl, function(data) {
+           var xml = parseXml(data);
+           var markerNodes = xml.documentElement.getElementsByTagName("marker");
+           var bounds = new google.maps.LatLngBounds();
+           for (var i = 0; i < markerNodes.length; i++) {
+             var id = markerNodes[i].getAttribute("id");
+             var name = markerNodes[i].getAttribute("name");
+             var address = markerNodes[i].getAttribute("address");
+             var distance = parseFloat(markerNodes[i].getAttribute("distance"));
+             var latlng = new google.maps.LatLng(
+                  parseFloat(markerNodes[i].getAttribute("lat")),
+                  parseFloat(markerNodes[i].getAttribute("lng")));
+
+             createOption(name, distance, i);
+             createMarker(latlng, name, address);
+             bounds.extend(latlng);
+           }
+           map.fitBounds(bounds);
+           locationSelect.style.visibility = "visible";
+           locationSelect.onchange = function() {
+             var markerNum = locationSelect.options[locationSelect.selectedIndex].value;
+             google.maps.event.trigger(markers[markerNum], 'click');
+           };
+         });
+       }
+
+       function createMarker(latlng, name, address) {
+          var html = "<b>" + name + "</b> <br/>" + address;
+          var marker = new google.maps.Marker({
+            map: map,
+            position: latlng
+          });
+          google.maps.event.addListener(marker, 'click', function() {
+            infoWindow.setContent(html);
+            infoWindow.open(map, marker);
+          });
+          markers.push(marker);
+        }
+
+       function createOption(name, distance, num) {
+          var option = document.createElement("option");
+          option.value = num;
+          option.innerHTML = name;
+          locationSelect.appendChild(option);
+       }
+
+       function downloadUrl(url, callback) {
+          var request = window.ActiveXObject ?
+              new ActiveXObject('Microsoft.XMLHTTP') :
+              new XMLHttpRequest;
+
+          request.onreadystatechange = function() {
+            if (request.readyState == 4) {
+              request.onreadystatechange = doNothing;
+              callback(request.responseText, request.status);
+            }
+          };
+
+          request.open('GET', url, true);
+          request.send(null);
+       }
+
+       function parseXml(str) {
+          if (window.ActiveXObject) {
+            var doc = new ActiveXObject('Microsoft.XMLDOM');
+            doc.loadXML(str);
+            return doc;
+          } else if (window.DOMParser) {
+            return (new DOMParser).parseFromString(str, 'text/xml');
+          }
+       }
+
+       function doNothing() {}
+  </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUrNCRjqIEC-lpaYtwwOCY-FKs6-F-cWU&callback=initMap">
+    </script>
+  </body>
+</html>
