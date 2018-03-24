@@ -1,159 +1,197 @@
-﻿<!DOCTYPE html >
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <title>Creating a Store Locator on Google Maps</title>
-  <style>
-    /* Always set the map height explicitly to define the size of the div
-     * element that contains the map. */
-    #map {
-      height: 100%;
-    }
-    /* Optional: Makes the sample page fill the window. */
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
- </style>
-  </head>
-  <body style="margin:0px; padding:0px;" onload="initMap()">
-    <div><select id="locationSelect" style="width: 10%; visibility: hidden"></select></div>
-    <div id="map" style="width: 100%; height: 90%"></div>
-    <script>
-      var map;
-      var markers = [];
-      var infoWindow;
-      var locationSelect;
+﻿<?php
+  $username="root";
+  $password="";
+  $database="GreenPedal";
 
-        function initMap() {
-          var sydney = {lat: 36.606216, lng: -121.898460};
-          map = new google.maps.Map(document.getElementById('map'), {
-            center: sydney,
-            zoom: 11,
-            mapTypeId: 'roadmap',
-            mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU}
-          });
-          infoWindow = new google.maps.InfoWindow();
+  // Start XML file, create parent node
+  $doc = domxml_new_doc("1.0");
+  $node = $doc->create_element("markers");
+  $parnode = $doc->append_child($node);
 
-          searchButton = document.getElementById("searchButton").onclick = searchLocations;
+  // Opens a connection to a MySQL server
+  $connection=mysql_connect ('localhost', $username, $password);
+  if (!$connection) {
+    die('Not connected : ' . mysql_error());
+  }
 
-          locationSelect = document.getElementById("locationSelect");
-          locationSelect.onchange = function() {
-            var markerNum = locationSelect.options[locationSelect.selectedIndex].value;
-            if (markerNum != "none"){
-              google.maps.event.trigger(markers[markerNum], 'click');
-            }
-          };
-        }
+  // Set the active MySQL database
+  $db_selected = mysql_select_db($database, $connection);
+  if (!$db_selected) {
+    die ('Can\'t use db : ' . mysql_error());
+  }
 
-       function searchLocations() {
-         var address = document.getElementById("addressInput").value;
-         var geocoder = new google.maps.Geocoder();
-         geocoder.geocode({address: address}, function(results, status) {
-           if (status == google.maps.GeocoderStatus.OK) {
-            searchLocationsNear(results[0].geometry.location);
-           } else {
-             alert(address + ' not found');
-           }
-         });
+  // Select all the rows in the businesses table
+  $query = "SELECT * FROM businesses WHERE 1";
+  $result = mysql_query($query);
+  if (!$result) {
+    die('Invalid query: ' . mysql_error());
+  }
+
+  header("Content-type: text/xml");
+
+  // Iterate through the rows, adding XML nodes for each
+  while ($row = @mysql_fetch_assoc($result)){
+    // Add to XML document node
+    $node = $doc->create_element("businesses");
+    $newnode = $parnode->append_child($node);
+
+    $newnode->set_attribute("Bus_ID", $row['Bus_ID']);
+    $newnode->set_attribute("name", $row['name']);
+    $newnode->set_attribute("address", $row['address']);
+    $newnode->set_attribute("lat", $row['lat']);
+    $newnode->set_attribute("lng", $row['lng']);
+  }
+
+  $xmlfile = $doc->dump_mem();
+  echo $xmlfile;
+
+  function parseToXML($htmlStr)
+  {
+    $xmlStr=str_replace('<','&lt;',$htmlStr);
+    $xmlStr=str_replace('>','&gt;',$xmlStr);
+    $xmlStr=str_replace('"','&quot;',$xmlStr);
+    $xmlStr=str_replace("'",'&#39;',$xmlStr);
+    $xmlStr=str_replace("&",'&amp;',$xmlStr);
+    return $xmlStr;
+  }
+
+  // Opens a connection to a MySQL server
+  $connection=mysqli_connect ('localhost', $username, $password);
+  if (!$connection) {
+   die('Not connected : ' . mysqli_error());
+  }
+
+  // Set the active MySQL database
+  $db_selected = mysqli_select_db($database, $connection);
+  if (!$db_selected) {
+   die ('Can\'t use db : ' . mysqli_error());
+  }
+
+  // Select all the rows in the businesses table
+  $query = "SELECT * FROM businesses WHERE 1";
+  $result = mysqli_query($query);
+  if (!$result) {
+   die('Invalid query: ' . mysqli_error());
+  }
+
+  header("Content-type: text/xml");
+
+  // Start XML file, echo parent node
+  echo "<?xml version='1.0' ?>";
+  echo '<businesses>';
+  $ind=0;
+  // Iterate through the rows, printing XML nodes for each
+  while ($row = @mysqli_fetch_assoc($result)){
+    // Add to XML document node
+    echo '<marker ';
+    echo 'Bus_ID="' . $row['Bus_ID'] . '" ';
+    echo 'name="' . parseToXML($row['name']) . '" ';
+    echo 'address="' . parseToXML($row['address']) . '" ';
+    echo 'lat="' . $row['lat'] . '" ';
+    echo 'lng="' . $row['lng'] . '" ';
+    echo '/>';
+    $ind = $ind + 1;
+  }
+  // End XML file
+  echo '</businesses>';
+
+  // Start XML file, create parent node
+
+  $dom = new DOMDocument("1.0");
+  $node = $dom->createElement("markers");
+  $parnode = $dom->appendChild($node);
+
+  // Opens a connection to a MySQL server
+
+  $connection=mysql_connect ('localhost', $username, $password);
+  if (!$connection) {  die('Not connected : ' . mysql_error());}
+
+  // Set the active MySQL database
+
+  $db_selected = mysql_select_db($database, $connection);
+  if (!$db_selected) {
+    die ('Can\'t use db : ' . mysql_error());
+  }
+
+  // Select all the rows in the businesses table
+
+  $query = "SELECT * FROM businesses WHERE 1";
+  $result = mysql_query($query);
+  if (!$result) {
+    die('Invalid query: ' . mysql_error());
+  }
+
+  header("Content-type: text/xml");
+
+  // Iterate through the rows, adding XML nodes for each
+
+  while ($row = @mysql_fetch_assoc($result)){
+    // Add to XML document node
+    $node = $dom->createElement("marker");
+    $newnode = $parnode->appendChild($node);
+    $newnode->setAttribute("id",$row['id']);
+    $newnode->setAttribute("name",$row['name']);
+    $newnode->setAttribute("address", $row['address']);
+    $newnode->setAttribute("lat", $row['lat']);
+    $newnode->setAttribute("lng", $row['lng']);
+    $newnode->setAttribute("type", $row['type']);
+  }
+
+  echo $dom->saveXML();
+?>
+<script>
+   function downloadUrl(url,callback) {
+     var request = window.ActiveXObject ?
+     new ActiveXObject('Microsoft.XMLHTTP') :
+     new XMLHttpRequest;
+
+     request.onreadystatechange = function() {
+       if (request.readyState == 4) {
+        request.onreadystatechange = doNothing;
+        callback(request, request.status);
        }
+     };
 
-       function clearLocations() {
-         infoWindow.close();
-         for (var i = 0; i < markers.length; i++) {
-           markers[i].setMap(null);
-         }
-         markers.length = 0;
+     request.open('GET', url, true);
+     request.send(null);
+   }
+   downloadUrl('https://storage.googleapis.com/mapsdevsite/json/mapmarkers2.xml', function(data) {
+   var xml = data.responseXML;
+   var markers = xml.documentElement.getElementsByTagName('marker');
+   Array.prototype.forEach.call(markers, function(markerElem) {
+     var id = markerElem.getAttribute('id');
+     var name = markerElem.getAttribute('name');
+     var address = markerElem.getAttribute('address');
+     var type = markerElem.getAttribute('type');
+     var point = new google.maps.LatLng(
+        parseFloat(markerElem.getAttribute('lat')),
+        parseFloat(markerElem.getAttribute('lng')));
 
-         locationSelect.innerHTML = "";
-         var option = document.createElement("option");
-         option.value = "none";
-         option.innerHTML = "See all results:";
-         locationSelect.appendChild(option);
-       }
+        var infowincontent = document.createElement('div');
+        var strong = document.createElement('strong');
+        strong.textContent = name
+        infowincontent.appendChild(strong);
+        infowincontent.appendChild(document.createElement('br'));
 
-       function searchLocationsNear(center) {
-         clearLocations();
-
-         var radius = document.getElementById('radiusSelect').value;
-         var searchUrl = 'storelocator.php?lat=' + center.lat() + '&lng=' + center.lng() + '&radius=' + radius;
-         downloadUrl(searchUrl, function(data) {
-           var xml = parseXml(data);
-           var markerNodes = xml.documentElement.getElementsByTagName("marker");
-           var bounds = new google.maps.LatLngBounds();
-           for (var i = 0; i < markerNodes.length; i++) {
-             var id = markerNodes[i].getAttribute("id");
-             var name = markerNodes[i].getAttribute("name");
-             var address = markerNodes[i].getAttribute("address");
-             var distance = parseFloat(markerNodes[i].getAttribute("distance"));
-             var latlng = new google.maps.LatLng(
-                  parseFloat(markerNodes[i].getAttribute("lat")),
-                  parseFloat(markerNodes[i].getAttribute("lng")));
-
-             createOption(name, distance, i);
-             createMarker(latlng, name, address);
-             bounds.extend(latlng);
-           }
-           map.fitBounds(bounds);
-           locationSelect.style.visibility = "visible";
-           locationSelect.onchange = function() {
-             var markerNum = locationSelect.options[locationSelect.selectedIndex].value;
-             google.maps.event.trigger(markers[markerNum], 'click');
-           };
-         });
-       }
-
-       function createMarker(latlng, name, address) {
-          var html = "<b>" + name + "</b> <br/>" + address;
-          var marker = new google.maps.Marker({
-            map: map,
-            position: latlng
-          });
-          google.maps.event.addListener(marker, 'click', function() {
-            infoWindow.setContent(html);
-            infoWindow.open(map, marker);
-          });
-          markers.push(marker);
-        }
-
-       function createOption(name, distance, num) {
-          var option = document.createElement("option");
-          option.value = num;
-          option.innerHTML = name;
-          locationSelect.appendChild(option);
-       }
-
-       function downloadUrl(url, callback) {
-          var request = window.ActiveXObject ?
-              new ActiveXObject('Microsoft.XMLHTTP') :
-              new XMLHttpRequest;
-
-          request.onreadystatechange = function() {
-            if (request.readyState == 4) {
-              request.onreadystatechange = doNothing;
-              callback(request.responseText, request.status);
-            }
-          };
-
-          request.open('GET', url, true);
-          request.send(null);
-       }
-
-       function parseXml(str) {
-          if (window.ActiveXObject) {
-            var doc = new ActiveXObject('Microsoft.XMLDOM');
-            doc.loadXML(str);
-            return doc;
-          } else if (window.DOMParser) {
-            return (new DOMParser).parseFromString(str, 'text/xml');
-          }
-       }
-
-       function doNothing() {}
-  </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUrNCRjqIEC-lpaYtwwOCY-FKs6-F-cWU&callback=initMap">
-    </script>
-  </body>
-</html>
+        var text = document.createElement('text');
+        text.textContent = address
+        infowincontent.appendChild(text);
+        var icon = customLabel[type] || {};
+        var marker = new google.maps.Marker({
+        map: map,
+        position: point,
+        label: icon.label
+   });
+   var customLabel = {
+     restaurant: {
+       label: 'R'
+     },
+     bar: {
+     label: 'B'
+     }
+   };
+   marker.addListener('click', function() {
+     infoWindow.setContent(infowincontent);
+     infoWindow.open(map, marker);
+   });
+</script>

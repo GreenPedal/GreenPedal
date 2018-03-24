@@ -1,13 +1,12 @@
 ﻿.Avebox {
-    float: right;
-     border: 10px solid black;
-    	color:black;
-        font-size:150%;
-    background-color:white;
+  float: right;
+  border: 10px solid black;
+  color:black;
+  font-size:150%;
+  background-color:white;
   width:45%;
-  margin-right:10%;
-      margin-left:45%;
-     border-radius: 50px;
+  margin-right:24vw;
+  border-radius: 50px;
   height:auto;
   margin-top:300px;
   padding: 10px 10px;
@@ -24,6 +23,7 @@ h4b {
 	font-size: 30px;
     color:white;
 	font-weight: bold;
+    text-decoration:none;
 }
 p1{
         position:center;
@@ -35,5 +35,6 @@ p1{
     margin-left:20%;
     margin-right:20%;
 }
-
-
+a:link {
+    text-decoration: none;
+}

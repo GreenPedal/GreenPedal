@@ -34,7 +34,7 @@ document.listForm.total.value = "sum";
 ?>
 
   <?php 
-  include("application/AddOns/HeaderNoLogo.php");
+  include("application/AddOns/Header.php");
   ?>
 <center>
 
