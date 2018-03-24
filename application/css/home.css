@@ -104,7 +104,9 @@ BlackBox {
 .homefooter {
     width: auto;
 }
-
+.phonelongo{
+    display:none;
+}
 .PhoneButtones {
     display: none;
 }
@@ -366,3 +368,4 @@ faderight {
         transform: rotateZ(0deg);
         left: 51%
     }
+}

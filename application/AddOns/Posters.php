@@ -5,11 +5,11 @@
     $Posters_sql="SELECT * FROM posters";
     $Posters_query=mysqli_query($dbconnect, $Posters_sql);
     $Posters_rs=mysqli_fetch_assoc($Posters_query);
-  ?>
+?>
 <div class="margin">
     <div class="Gray">
       <?php 
-	  do{
+	   do{
 	  ?>
       <a href="<?php echo $Posters_rs['website']; ?>">
         <img  class="PosterImage" src="images/PoasterPics/<?php echo $Posters_rs ['pic']; ?>" />
