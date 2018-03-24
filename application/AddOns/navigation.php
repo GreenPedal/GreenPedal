@@ -9,7 +9,7 @@
       <a href="index.php?page=application/FrontPages/DeliverysPage">
         <button class="dropbtn">Delivery</button></a>
       <div class="dropdown-content">
-    <a href="index.php?page=application/Links/Businesses">Food Delivery</a>
+    <a href="index.php?page=application/Links/Search">Food Delivery</a>
         <a href="index.php?page=application/Links/DeliveryQuestionnaire">Other Delivery</a>
       </div>
     </div>
