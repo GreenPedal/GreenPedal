@@ -3,7 +3,7 @@
   session_start();
 	
 	if(!isset($_SESSION['admin'])) {
-		header("Location:index.php");
+		header("Location:application/Links/ThankYou.php");
 	}  
   
   	if(isset($_POST['submit'])) {
@@ -164,9 +164,7 @@ $DClmail->AltBody = $clmessage;
 $DClmail->Body = $clmessage;
 
 
- $Text->send();
  $DClmail->send();
- $DisMail->send();
 
 
 

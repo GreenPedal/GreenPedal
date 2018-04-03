@@ -30,6 +30,9 @@ QLight{
 .PhoneShow{
         display:none;
         }
+home {
+    display: none;
+}
 
 @media screen and (max-width:600px){
 .PhoneNoShow{
@@ -76,6 +79,12 @@ a{
     border: 1px solid black;
       padding: 5px 5px;
 
+    }
+    home {
+        font-size:17vw;
+        color:blue;
+        margin-top:8vh;
+        display: block;
     }
 
 }
