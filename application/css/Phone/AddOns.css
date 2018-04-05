@@ -1,0 +1,95 @@
+﻿.box {
+    float: right;
+     border: 10px solid black;
+    	color:black;
+    background-color:white;
+  width:90%;
+  margin-right:5%;
+      margin-left:5%;
+     border-radius: 25px;
+  height:auto;
+  margin-top:300px;
+  padding: 10px 10px;
+}
+.logo {
+
+	float:left;
+    padding: 0px 5px;
+}
+.Gray {
+    float:left;
+      opacity: 0.8;
+   filter: grayscale(100%);
+     font-size: 20px;
+    font-weight: bold;
+    transition: transform .2s;
+    margin: 0 auto;
+}
+.Gray:hover {
+      opacity: .9;
+     filter: grayscale(0%);
+	color:Green;
+    font-size: 20px;
+    font-weight: bold;
+	font-family:Arial, Helvetica, sans-serif;
+   
+}
+.PosterImage {
+    border-radius: 25px;   
+    border: 5px solid black;
+      padding: 5px;
+      height:200px;
+
+}
+.item {
+	margin-bottom:10px;
+    margin-top:10px;
+	float:left;	
+    font-weight: bold;
+    text-decoration:none;
+	color:#ffffff;
+}
+.margin{
+    margin-left:10%;
+    margin-right:10%;
+}
+.container {
+  float:left;
+
+}
+.whitetext {
+    color:white;
+    position: absolute;
+    font-size: 18px;
+}
+.DeliContainer {
+    position: center;
+	background-color:black;
+  width:60%;
+  margin-right:20%;
+      margin-left:20%;
+  height:auto;
+  padding: 20px 20px;
+}
+.column {
+    float: left;
+    width: 40%;
+}
+.blacktext {
+  color:black;
+    position: absolute;
+
+}
+@media screen and (max-width:500px) {
+    .item {
+display:none;
+
+    }
+    .PosterImage {
+display:none;
+}
+
+
+}
+
+
