@@ -5,16 +5,16 @@
 	}  
   	if(isset($_POST['send'])) {
       		$_SESSION['Email']['email']=$_POST['email'];
-		$_SESSION['Email']['name']=$_POST['name'];
-     	$_SESSION['Email']['Subject']=$_POST['Subject'];
-		$_SESSION['Email']['body']=$_POST['body'];
+		    $_SESSION['Email']['name']=$_POST['name'];
+     	    $_SESSION['Email']['Subject']=$_POST['Subject'];
+		    $_SESSION['Email']['body']=$_POST['body'];
     }
-     $email .= $_POST['email'] . "\n";
- $name .= $_POST['name'] . "\n";
- $Subject .= $_POST['Subject'] . "\n";
-$body .= $_POST['body'] . "\n";
+    $email .= $_POST['email'] . "\n";
+    $name .= $_POST['name'] . "\n";
+    $Subject .= $_POST['Subject'] . "\n";
+    $body .= $_POST['body'] . "\n";
   
-  include("Mail.php");
+  include("application/Email/Mail.php");
 
 $DisMessage = '<html><body><center>';
 $DisMessage .= '<p>';
@@ -49,8 +49,8 @@ $con->AltBody = $clmessage;
 $con->Body = $clmessage;
 
 
- ($con->send());
-
+$con->send();
+ //$DisMail->send();
 ?>
 <p>Message sent</p>
 

@@ -3,7 +3,7 @@
   session_start();
 	
 	if(!isset($_SESSION['admin'])) {
-		header("Location:index.php?page=application/Links/login");
+		header("Location:index.php?page=application/Links/ThatYou");
 	}  
   
   	if(isset($_POST['submit'])) {

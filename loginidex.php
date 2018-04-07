@@ -1,13 +1,14 @@
 <?php 
 /* Main page with two forms: sign up and log in */
-include("application/DBConnect/dbconnect.php");
-
+require 'db.php';
 session_start();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-  <?php include 'application/css/css.html'; ?>
+   <?php  
+     include 'css/css.html'; 
+   ?>
 </head>
 
 <?php 
@@ -39,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
          <div id="login">   
           <h1>Welcome Back!</h1>
           
-          <form action="application/Links/login.php" method="post" autocomplete="off">
+          <form action="loginidex.php" method="post" autocomplete="off">
           
             <div class="field-wrap">
             <label>
@@ -66,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         <div id="signup">   
           <h1>Sign Up for Free</h1>
           
-          <form action="application/Links/login.php" method="post" autocomplete="off">
+          <form action="loginidex.php" method="post" autocomplete="off">
           
           <div class="top-row">
             <div class="field-wrap">

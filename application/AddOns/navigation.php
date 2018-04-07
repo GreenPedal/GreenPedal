@@ -29,7 +29,7 @@
     </div>
   </div>
    <div class="dropdown">
-<a href="index.php?page=application/Links/login">
+<a href="index.php?page=loginidex">
   <button class="dropbtn">Login</button></a>
   </div>
   <div class="clickdropdown" onclick="myFunction1(this)">
