@@ -1,9 +1,6 @@
 
   <?php
 	include("application/DBConnect/dbconnect.php");
-	if(!isset($_SESSION['admin'])) {
-		header("Location:index.php");
-	}
 	unset($_SESSION['editadvertising']);
 	
 	$what_sql="SELECT * FROM whatweoffer";
