@@ -1,6 +1,8 @@
 <?php 
 /* Reset your password form, sends reset.php password link */
 require 'db.php';
+include("application/Email/Mail.php");
+
 session_start();
 
 // Check if form submitted with method="post"
@@ -15,22 +17,6 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
         header("location: error.php");
     }
     else { // User exists (num_rows != 0)
-	date_default_timezone_set('Etc/UTC');
- 
-require 'application/PHPMailer/phpmailer/phpmailer/PHPMailerAutoload.php';
- 
-$from = new PHPMailer();
-$from->isSMTP();
-$from->SMTPDebug   = 2;
-$from->DKIM_domain = '160.153.36.2';
-$from->Debugoutput = 'html';
-$from->Host        = "p3plcpnl0734.prod.phx3.secureserver.net";
-$from->Port        = 465;
-$from->Username    = "delivery@greenpedal831.com";
-$from->Password    = "Gr33nPedal";
-$from->setFrom('delivery@greenpedal831.com', 'Your Delivery');
-$from->SMTPAuth    = true;
-$from->SMTPSecure  = 'ssl';
 
         $user = $result->fetch_assoc(); // $user becomes array with user data
         $email = $user['email'];
@@ -42,7 +28,6 @@ $from->SMTPSecure  = 'ssl';
         . " for a confirmation link to complete your password reset!</p>";
 
         // Send registration confirmation link (reset.php)
-        $to      = $email;
         $subject = 'Password Reset';
         $message_body = '
         Hello '.$first_name.',
@@ -51,11 +36,16 @@ $from->SMTPSecure  = 'ssl';
 
         Please click this link to reset your password:
 
-        http://localhost/login-system/reset.php?email='.$email.'&hash='.$hash; 
+        http://localhost/GreenPedal/reset.php?email='.$email.'&hash='.$hash; 
 		
-		
+        $con->addAddress($email);
+        $con->Subject = $subject;
+        $con->AltBody = $message_body;
+        $con->Body = $message_body;
 
-        mail($from, $to, $subject, $message_body);
+		$con->send();
+
+
 		
         header("location: success.php");
   }
