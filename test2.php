@@ -25,12 +25,12 @@ else {
 <?php
 
 if ($promis) {
-        header("location: index.php?page=application/Links/EmailUs");
+        header("location: index.php?page=application/Profiles/Bus");
 } elseif($admin) {
-        header("location: index.php?page=application/BackPages/cpanel");
+        header("location: index.php?page=application/Profiles/Admin");
 }
     else {
-        header("location: profile.php");
+        header("location: index.php?page=application/Profiles/Cust");
 }
 
 ?>

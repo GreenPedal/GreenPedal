@@ -40,16 +40,12 @@ else {
           <form action="reset_password.php" method="post">
               
           <div class="field-wrap">
-            <label>
-              New Password<span class="req">*</span>
-            </label>
+            <div style="color:green">New Password<span>*</span></div>
             <input type="password"required name="newpassword" autocomplete="off"/>
           </div>
               
           <div class="field-wrap">
-            <label>
-              Confirm New Password<span class="req">*</span>
-            </label>
+            <div style="color:green">Confirm New Password<span>*</span></div>
             <input type="password"required name="confirmpassword" autocomplete="off"/>
           </div>
           

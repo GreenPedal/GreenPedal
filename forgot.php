@@ -36,7 +36,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
 
         Please click this link to reset your password:
 
-        http://localhost/GreenPedal/reset.php?email='.$email.'&hash='.$hash; 
+        https://greenpedal831.com/reset.php?email='.$email.'&hash='.$hash; 
 		
         $con->addAddress($email);
         $con->Subject = $subject;
@@ -47,7 +47,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
 
 
 		
-        header("location: success.php");
+        header("https://greenpedal831.com/success.php");
   }
 }
 ?>
@@ -65,17 +65,12 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
 
     <form action="forgot.php" method="post">
      <div class="field-wrap">
-      <label>
-        Email Address<span class="req">*</span>
-      </label>
+            <div style="color:green">Email Address<span>*</span></div>
       <input type="email"required autocomplete="off" name="email"/>
     </div>
-    <button class="button button-block"/>Reset</button>
+    <button class="button button-block"/>Reset</button> 
     </form>
   </div>
-          
-<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src="js/index.js"></script>
-</body>
+ </body>
 
 </html>
