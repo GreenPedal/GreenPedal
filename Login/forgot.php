@@ -14,7 +14,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
     if ( $result->num_rows == 0 ) // User doesn't exist
     { 
         $_SESSION['message'] = "User with that email doesn't exist!";
-        header("location: error.php");
+        header("location: index.php?page=Login/error");
     }
     else { // User exists (num_rows != 0)
 
@@ -36,7 +36,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
 
         Please click this link to reset your password:
 
-        https://greenpedal831.com/reset.php?email='.$email.'&hash='.$hash; 
+        https://greenpedal831.com/Login/reset.php?email='.$email.'&hash='.$hash; 
 		
         $con->addAddress($email);
         $con->Subject = $subject;
@@ -47,7 +47,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
 
 
 		
-        header("https://greenpedal831.com/success.php");
+        header("https://greenpedal831.com/Login/success.php");
   }
 }
 ?>
@@ -63,7 +63,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' )
 
     <h1>Reset Your Password</h1>
 
-    <form action="forgot.php" method="post">
+    <form action="index.php?page=Login/forgot" method="post">
      <div class="field-wrap">
             <div style="color:green">Email Address<span>*</span></div>
       <input type="email"required autocomplete="off" name="email"/>

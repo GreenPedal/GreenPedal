@@ -1,4 +1,5 @@
 <?php
+include("application/Email/Mail.php");
 /* Registration process, inserts user info into the database 
    and sends account confirmation email message
  */
@@ -22,7 +23,7 @@ $result = $mysqli->query("SELECT * FROM users WHERE email='$email'") or die($mys
 if ( $result->num_rows > 0 ) {
     
     $_SESSION['message'] = 'User with this email already exists!';
-    header("location: error.php");
+    header("location: index.php?page=Login/error");
     
 }
 else { // Email doesn't already exist in a database, proceed...
@@ -43,7 +44,7 @@ else { // Email doesn't already exist in a database, proceed...
 
         // Send registration confirmation link (verify.php)
         $to      = $email;
-        $subject = 'Account Verification ( clevertechie.com )';
+        $subject = 'Account Verification';
         $message_body = '
         Hello '.$first_name.',
 
@@ -51,17 +52,21 @@ else { // Email doesn't already exist in a database, proceed...
 
         Please click this link to activate your account:
 
-        http://localhost/login-system/verify.php?email='.$email.'&hash='.$hash;  
+        https://greenpedal831.com/Login/verify.php?email='.$email.'&hash='.$hash;  
+        $con->addAddress($email);
+        $con->Subject = $subject;
+        $con->AltBody = $message_body;
+        $con->Body = $message_body;
 
-        mail( $to, $subject, $message_body );
+		$con->send();
 
-        header("location: profile.php"); 
+        header("location: index.php?page=application/Profiles/Cust"); 
 
     }
 
     else {
         $_SESSION['message'] = 'Registration failed!';
-        header("location: error.php");
+        header("location: index.php?page=Login/error");
     }
 
 }

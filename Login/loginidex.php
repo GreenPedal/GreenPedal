@@ -1,6 +1,5 @@
 <?php 
 /* Main page with two forms: sign up and log in */
-	include("application/DBConnect/dbconnect.php");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -16,13 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     if (isset($_POST['login'])) { //user logging in
 
-        require 'login.php';
+        require 'Login/login.php';
         
     }
     
     elseif (isset($_POST['register'])) { //user registering
         
-        require 'register.php';
+        require 'Login/register.php';
         
     }
 }
@@ -40,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
          <div id="login" class="tabcontent">   
           <h1>Welcome Back!</h1>
           
-          <form action="loginidex.php" method="post" autocomplete="off">
+          <form action="index.php?page=Login/loginidex" method="post" autocomplete="off">
           
             <div class="field-wrap">
             <div style="color:green">Email<span>*</span></div>
@@ -52,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             <input type="password" required autocomplete="off" name="password"/>
           </div>
           
-          <p class="forgot"><a href="forgot.php">Forgot Password?</a></p>
+          <p class="forgot"><a href="index.php?page=Login/forgot">Forgot Password?</a></p>
           
           <button class="button button-block" name="login" />Log In</button>
           
@@ -63,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         <div id="signup" class="tabcontent">   
           <h1>Sign Up for Free</h1>
           
-          <form action="loginidex.php" method="post" autocomplete="off">
+          <form action="index.php?page=Login/loginidex" method="post" autocomplete="off">
           
           <div class="top-row">
             <div class="field-wrap">

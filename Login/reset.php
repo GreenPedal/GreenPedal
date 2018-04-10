@@ -17,12 +17,12 @@ if( isset($_GET['email']) && !empty($_GET['email']) AND isset($_GET['hash']) && 
     if ( $result->num_rows == 0 )
     { 
         $_SESSION['message'] = "You have entered invalid URL for password reset!";
-        header("location: error.php");
+        header("location: index.php?page=Login/error");
     }
 }
 else {
     $_SESSION['message'] = "Sorry, verification failed, try again!";
-    header("location: error.php");  
+    header("location: index.php?page=Login/error");  
 }
 ?>
 <!DOCTYPE html>
@@ -37,7 +37,7 @@ else {
 
           <h1>Choose Your New Password</h1>
           
-          <form action="reset_password.php" method="post">
+          <form action="index.php?page=Login/reset_password" method="post">
               
           <div class="field-wrap">
             <div style="color:green">New Password<span>*</span></div>
@@ -58,8 +58,6 @@ else {
           </form>
 
     </div>
-<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script src="js/index.js"></script>
 
 </body>
 </html>

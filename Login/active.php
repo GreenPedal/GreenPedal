@@ -5,7 +5,7 @@ session_start();
 // Check if user is logged in using the session variable
 if ( $_SESSION['logged_in'] != 1 ) {
   $_SESSION['message'] = "You must log in before viewing your profile page!";
-  header("location: error.php");    
+  header("location: index.php?page=Login/error");    
 }
 else {
     // Makes it easier to read
@@ -25,7 +25,7 @@ else {
 <?php
 
 if ($active) {
-        header("location: test2.php");
+        header("location: index.php?page=Login/test2");
     }else {
    echo "Please check your email to active your account";
 }
