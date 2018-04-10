@@ -68,7 +68,7 @@
      </div>
 	 <center>
          <div class="buttonclass">
-            <a href="index.php?page=application/Links/category&Bus_ID=
+            <a href="index.php?page=application/Pages/category&Bus_ID=
                <?php echo $Businesses_rs['Bus_ID']; ?>">
                <input class="button" type="submit" name="Menu" value="Menu"/>
             </a>

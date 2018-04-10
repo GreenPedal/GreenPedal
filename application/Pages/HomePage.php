@@ -25,7 +25,7 @@
  </div>
 </div>
 <?php //Delivery Button?>
-<a href="index.php?page=application/FrontPages/DeliverysPage">
+<a href="index.php?page=application/Pages/DeliverysPage">
   <div class="GrayS">
 	 <div class="leftbox"> 
 		<div class="right" style="background-color:white;">
@@ -53,7 +53,7 @@
   </center>
 </div>
 <?php //Events button?>
-<a href="index.php?page=application/FrontPages/EventPage"> 
+<a href="index.php?page=application/Pages/EventPage"> 
   <div class="GrayS">
 	 <div class="rightbox"> 
 		<div class="left1" style="background-color:white">
@@ -86,7 +86,7 @@
         </div>
 
       </center>
-      <a href="index.php?page=application/Links/Businesses">
+      <a href="index.php?page=application/Pages/Businesses">
         <div class="Buttoncall">
           <div class="PhoneButtones">
             Food Delivery
@@ -94,7 +94,7 @@
         </div>
       </a>
       <div class="Buttoncall"></div>
-      <a href="index.php?page=application/Links/DeliveryQuestionnaire">
+      <a href="index.php?page=application/Pages/DeliveryQuestionnaire">
         <div class="Buttoncall">
           <div class="PhoneButtones2">
             Other Delivery

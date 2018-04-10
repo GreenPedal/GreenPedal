@@ -13,7 +13,7 @@
 
       <?php 
 		if(!isset($_GET['page'])) {
-			include("application/FrontPages/HomePage.php");
+			include("application/Pages/HomePage.php");
 		} else {
 			$page=$_GET['page'];
 			include("$page.php");

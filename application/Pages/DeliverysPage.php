@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
    </head>
   <body> 
-<a href="index.php?page=application/Links/Search">
+<a href="index.php?page=application/Pages/Search">
   <div class="GrayD"> 
 	 <div class="whiteboxs"> 
 		<center>
@@ -17,7 +17,7 @@
      </div>
   </div> 
 </a>
-<a href="index.php?page=application/Links/DeliveryQuestionnaire">
+<a href="index.php?page=application/Pages/DeliveryQuestionnaire">
    <div class="GrayD"> 
       <div class="whiteboxs1"> 
 		 <center>

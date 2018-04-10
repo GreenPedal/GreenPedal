@@ -27,13 +27,13 @@
   <div class="listCon">
     <mp>
       <?php do { ?>
-        <a href="index.php?page=application/Links/Item&Cat_ID=
+        <a href="index.php?page=application/Pages/Item&Cat_ID=
           <?php echo $BUS_rs['Cat_ID']; ?>">
           <br>
            <?php echo $BUS_rs['Cat_Name']; ?>
           </br>
         </a>
-        <a href="index.php?page=application/Links/Item&Cat_ID=
+        <a href="index.php?page=application/Pages/Item&Cat_ID=
            <?php echo $BUS_rs['Cat_ID']; ?>">
            <br>
            <?php

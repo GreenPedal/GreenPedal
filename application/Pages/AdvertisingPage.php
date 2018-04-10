@@ -33,7 +33,7 @@
                 </br>
               </p1>
               <br>
-                <a href="index.php?page=application/Links/AdvertisingQuestionnaire"><h4b> Contact Us </h4b>
+                <a href="index.php?page=application/Pages/AdvertisingQuestionnaire"><h4b> Contact Us </h4b>
                 </a>
               </br>
             </center>
