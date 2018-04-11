@@ -27,7 +27,7 @@ else {
 if ($active) {
         header("location: index.php?page=Login/test2");
     }else {
-   echo "Please check your email to active your account";
+   include ("Login/sorryactive.php");
 }
 
 ?>
