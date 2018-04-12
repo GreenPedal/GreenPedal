@@ -9,6 +9,7 @@ if ( $_SESSION['logged_in'] != 1 ) {
 }
 else {
     // Makes it easier to read
+	    $UserID = $_SESSION['ID'];
     $first_name = $_SESSION['first_name'];
     $last_name = $_SESSION['last_name'];
     $email = $_SESSION['email'];
@@ -25,7 +26,7 @@ else {
 <?php
 
 if ($active) {
-        header("location: index.php?page=Login/test2");
+        header("location: index.php?page=application/Profiles/Admin");
     }else {
    include ("Login/sorryactive.php");
 }
