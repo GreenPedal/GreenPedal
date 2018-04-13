@@ -1,5 +1,5 @@
 <?php
-	include("dbconnect.php");
+	include("application/DBConnect/dbconnect.php");
 session_start();
 if(!isset($_SESSION['admin'])) {
 header("Location:index.php");
@@ -16,7 +16,6 @@ $_SESSION['editDeliverypage']['words']=$Deliverypage_rs['words'];
 }
 ?>
 <center>
-  <?php  include("header.php");?>
 <div class="text">
   <form action="index.php?page=Deliverypage/editDeliverypageconfirm" method="post">
     <textarea name="words" rows="10" cols="30">

@@ -1,5 +1,5 @@
 <?php
-	include("dbconnect.php");
+	include("application/DBConnect/dbconnect.php");
 	session_start();
 	if(!isset($_SESSION['admin'])) {
 		header("Location:index.php");
@@ -7,7 +7,6 @@
 	$_SESSION['editwhatweoffer']['name']=$_POST['name'];
 ?>
 <center>
-  <?php  include("header.php");?>
 
   <div class="text">
     <h1>Is This Right</h1>

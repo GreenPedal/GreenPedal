@@ -1,5 +1,5 @@
 <?php
-	include("dbconnect.php");
+	include("application/DBConnect/dbconnect.php");
 	session_start();
 	if(!isset($_SESSION['admin'])) {
 		header("Location:index.php");
@@ -9,7 +9,6 @@
 	unset($_SESSION['addwhatweoffer']);
 ?>
 <center>
-  <?php  include("header.php");?>
 
   <div class="text">
     <p>You Enter a new What We Offer</p>

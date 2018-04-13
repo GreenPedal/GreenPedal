@@ -4,9 +4,6 @@ $Businesses_sql="SELECT * FROM businesses";
 	$Businesses_rs=mysqli_fetch_assoc($Businesses_query);
 
 	?>
-<?php
-	include("navigation.php");
-?>
 
 	<div class="DeliContainer">
 	<div class="item">

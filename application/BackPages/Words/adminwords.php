@@ -1,5 +1,5 @@
 <?php
-	include("dbconnect.php");
+	include("application/DBConnect/dbconnect.php");
 	session_start();
 	if(!isset($_SESSION['admin'])) {
 		header("Location:index.php");
@@ -23,7 +23,6 @@
 	$words_rs=mysqli_fetch_assoc($words_query);
 ?>
 <center>
-  <?php  include("header.php");?>
 <div class="text">
   <?php do { ?>
   <p>

@@ -1,5 +1,5 @@
 <?php
-	include("dbconnect.php");
+	include("application/DBConnect/dbconnect.php");
   
 	session_start();
 	if(!isset($_SESSION['admin'])) {
@@ -14,8 +14,6 @@
 	unset($_SESSION['editEventPage']);
 ?>
 <center>
-  <?php  include("header.php");?>
-
 <div class="text">
 <p>The Event Page Info is updated..</p>
 <p>

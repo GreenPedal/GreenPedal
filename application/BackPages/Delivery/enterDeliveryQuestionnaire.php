@@ -12,8 +12,6 @@
 	
 ?>
 <center>
-  <?php  include("header.php");?>
-
   <div class="text">
     <p>New Businesse has been entered</p>
 <p><a href="index.php?page=admin">Back to admin</a> - <a href="index.php?page=Businesse/addBusinesse">Add anther Event</a></p>

@@ -1,8 +1,5 @@
-
-
-
 <?php
-	include("dbconnect.php");
+	include("application/DBConnect/dbconnect.php");
 	session_start();
 	if(isset($_GET['ID'])) {
 		$_SESSION['editwhereweoffer']['ID']=$_GET['ID'];
@@ -15,7 +12,6 @@
 	}
 ?>
 <center>
-  <?php  include("header.php");?>
 
   <div class="text">
 <form action="index.php?page=where/editwhereconfirm" method="post">

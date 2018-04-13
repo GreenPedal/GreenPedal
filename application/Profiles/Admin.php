@@ -1,13 +1,10 @@
 <?php
-/* Displays user information and some useful messages */
-session_start();
-// Check if user is logged in using the session variable
-if ( $_SESSION['logged_in'] != 1 ) {
+ session_start();
+ if ( $_SESSION['logged_in'] != 1 ) {
   $_SESSION['message'] = "You must log in before viewing your profile page!";
   header("location: error.php");    
-}
-else {
-    // Makes it easier to read
+ }
+ else {
     $UserID = $_SESSION['ID'];
     $first_name = $_SESSION['first_name'];
     $last_name = $_SESSION['last_name'];
@@ -16,111 +13,90 @@ else {
 	$pic = $_SESSION['pic'];
     $promis = $_SESSION['promis'];
 	$admin = $_SESSION['admin'];
-
-	  Include("application/DBConnect/dbconnect.php");
-  $Businesses_sql="SELECT * FROM businesses";
+    $Businesses_sql="SELECT * FROM businesses";
 	$Businesses_query=mysqli_query($dbconnect, $Businesses_sql);
 	$Businesses_rs=mysqli_fetch_assoc($Businesses_query);
-  $addresses_sql="SELECT * FROM addresses WHERE User_ID='$UserID'";
+    $addresses_sql="SELECT * FROM addresses WHERE User_ID='$UserID'";
 	$addresses_query=mysqli_query($dbconnect, $addresses_sql);
 	$addresses_rs=mysqli_fetch_assoc($addresses_query);
-
-
-
-}
+ }
 ?>
 <!DOCTYPE html>
 <html >
-<head>
+ <head>
 	<link href="application/css/Businesses.css" rel="stylesheet" type="text/css" />
 	<link href="application/css/Phone/Businesses.css" rel="stylesheet" type="text/css" />
-  <meta charset="UTF-8">
-  <title>Welcome <?= $first_name.' '.$last_name ?></title>
-  <?php
-   include 'css/css.html'; 
-  ?>
-</head>
-
-<body>
+    <meta charset="UTF-8">
+    <title>Welcome <?= $first_name.' '.$last_name ?></title>
+    <?php
+      include 'css/css.html'; 
+    ?>
+ </head>
+ <body>
   <div class="proform">
-    <center>
-      <div class="WalcomName">
-		<img  width="100%" src="images/User/<?php echo $pic; ?>"</img>
-		<h3>Stay Green <?php echo $first_name.' '.$last_name; ?></h3> 
-	    <div class="sidetab">
-		   <?php
-              if ($promis) {
-           ?> 
-             <button class="tablinks" onclick="openCity(event, 'Dash')" id="defaultOpen">promis</button>
-		   <?php
-              } elseif($admin) {
-		  ?> 
-		  <button class="tablinks" onclick="openCity(event, 'AdminDash')" id="defaultOpen">AdminDashBoard</button>
-		  <button class="tablinks" onclick="openCity(event, 'Chagne')">ChangeWebSite</button>
-		  <button class="tablinks" onclick="openCity(event, 'Dispatch')">Dispatch</button>
-		  <button class="tablinks" onclick="openCity(event, 'Add')">Add Something</button>
-		  <?php
-            }else {
-	      ?> 
-            <button class="tablinks" onclick="openCity(event, 'Dash')" id="defaultOpen">nothing</button>
-            <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
-		  <?php
-            }
-	      ?> 
-		  <button class="tablinks" onclick="openCity(event, 'Chagne')">Change Profile</button>
-		  <button class="tablinks" onclick="openCity(event, 'Delivery')">Delivery</button>
-          <a href="index.php?page=Login/logout"><button style="border:3px solid red;" class="tablinks" >LogOut</button><a>
-        </div>
-      </div>
-	</center>
+   <center>
+    <div class="WalcomName">
+	 <img  width="100%" src="images/User/<?php echo $pic; ?>"</img>
+	 <h3>Stay Green <?php echo $first_name.' '.$last_name; ?></h3> 
+	 <div class="sidetab">
+	   <?php
+         if ($promis) {
+       ?> 
+       <button class="tablinks" onclick="openCity(event, 'Dash')" id="defaultOpen">promis</button>
+	   <?php
+          } elseif($admin) {
+	   ?> 
+	   <button class="tablinks" onclick="openCity(event, 'AdminDash')" id="defaultOpen">AdminDashBoard</button>
+	   <button class="tablinks" onclick="openCity(event, 'WebSite')">ChangeWebSite</button>
+	   <button class="tablinks" onclick="openCity(event, 'Dispatch')">Dispatch</button>
+	   <button class="tablinks" onclick="openCity(event, 'Add')">Add Something</button>
+	   <?php
+          }else {
+	   ?> 
+       <button class="tablinks" onclick="openCity(event, 'Dash')" id="defaultOpen">nothing</button>
+	   <?php
+          }
+	   ?> 
+	   <button class="tablinks" onclick="openCity(event, 'Chagne')">Change Profile</button>
+	   <button class="tablinks" onclick="openCity(event, 'Delivery')">Delivery</button>
+       <a href="index.php?page=Login/logout"><button style="border:3px solid red;" class="tablinks" >LogOut</button><a>
+     </div>
+    </div>
+   </center>
   </div>
-
   <div class="mainBox">
-        <div id="Dash" class="sidetabcontent">
-          <h3>Dash Board</h3>
-          <p>London is the capital city of England.</p>
-        </div>
-		<div id="AdminDash" class="sidetabcontent">
-          <h3>Admin DashBoard</h3>
-          <p>This is where we see what the company is doing</p>
-        </div>
-		<div id="Chagne" class="sidetabcontent">
-		<?php
-		include("application/Profiles/Change.php")
-		?>
-        </div>
-	    <div id="Dispatch" class="sidetabcontent">
-          <h3>Dispatch</h3>
-          <p>this is where we will Dispatch jobs to people</p> 
-        </div>
-		<div id="Add" class="sidetabcontent">
-          <h3>Add Something</h3>
-          <p>this is where we will add a emoly a resturant</p> 
-        </div>
-        <div id="Paris" class="sidetabcontent">
-          <h3>Paris</h3>
-          <p>Paris is the capital of France.</p> 
-        </div>
-        <div id="Tokyo" class="sidetabcontent">
-          <h3>Tokyo</h3>
-          <p>Tokyo is the capital of Japan.</p>
-        </div>
-		<div id="Delivery" class="sidetabcontent">
-		   <?php
-		     include("application/Profiles/Delivery.php")
-		   ?>
-        </div>
+   <div id="Dash" class="sidetabcontent">
+     <h3>Dash Board</h3>
+     <p>London is the capital city of England.</p>
+   </div>
+   <div id="AdminDash" class="sidetabcontent">
+    <h3>Admin DashBoard</h3>
+    <p>This is where we see what the company is doing</p>
+   </div>
+   <div id="Delivery" class="sidetabcontent">
+     <?php
+	  include("application/Profiles/Delivery.php")
+	 ?>
+   </div>
+   <div id="WebSite" class="sidetabcontent">
+     <?php
+	  include("application/BackPages/cpanel.php")
+	 ?>
+   </div>
+   <div id="Chagne" class="sidetabcontent">
+     <?php
+	  include("application/Profiles/Change.php")
+	 ?>
+   </div>
+   <div id="Dispatch" class="sidetabcontent">
+    <h3>Dispatch</h3>
+    <p>this is where we will Dispatch jobs to people</p> 
+   </div>
+   <div id="Add" class="sidetabcontent">
+     <h3>Add Something</h3>
+     <p>this is where we will add a emoly a resturant</p> 
+   </div>
   </div>
-</div>
-
-
-
-		<div id="Profile" class="sidetabcontent">
-          <h3>Change Your Profile</h3>
-          <p>this is where we change your prfile</p>
-        </div>
-
-		</div>
   <script>
   function openCity(evt, cityName) {
     var i, sidetabcontent, tablinks;
@@ -153,11 +129,7 @@ else {
   document.getElementById("defaultOpen").click();
 
 </script>
-      </div>   
-	</center>
-	<div class="buttonright">
-	<p>
-</p>
-</body>
+ </body>
+
 </html>
 

@@ -39,6 +39,23 @@ a:hover {
     box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
 }
 
+.Cimage {
+    height:100px;
+
+}
+
+.imgpanel {
+    float:left;
+    padding: 8px;
+    display: none;
+    background-color: black;
+    color: green;
+    overflow: hidden;
+    font-size: 20px;
+    width:30%;
+}
+
+
 
 .tab-group {
   list-style: none;

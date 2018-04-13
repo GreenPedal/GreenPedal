@@ -1,13 +1,11 @@
 <?php
-	include("dbconnect.php");
+	include("application/DBConnect/dbconnect.php");
 	session_start();
 	if(!isset($_SESSION['admin'])) {
 		header("Location:index.php");
 	}
 ?>
 <center>
-  <?php  include("header.php");?>
-
   <div class="text">
     <h1>Are You Sure</h1>
       <?php $delwhatweoffer_sql="SELECT * FROM whatweoffer WHERE ID=".$_GET['ID'];

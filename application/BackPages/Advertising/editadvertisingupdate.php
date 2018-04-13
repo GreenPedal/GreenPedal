@@ -1,5 +1,5 @@
 <?php
-	include("dbconnect.php");
+	include("application/DBConnect/dbconnect.php");
 	session_start();
 	if(!isset($_SESSION['admin'])) {
 		header("Location:index.php");
@@ -12,7 +12,6 @@
 	unset($_SESSION['editadvertising']);
 ?>
 <center>
-  <?php  include("header.php");?>
 
   <div class="text">
     <p>The Words are updated..</p>

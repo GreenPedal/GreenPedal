@@ -1,5 +1,5 @@
 <?php
-	include("dbconnect.php");
+	include("application/DBConnect/dbconnect.php");
 session_start();
 if(!isset($_SESSION['admin'])) {
 header("Location:index.php");
@@ -15,7 +15,6 @@ $_SESSION['editfrontpage']['words']=$frontpage_rs['words'];
 }
 ?>
 <center>
-  <?php  include("header.php");?>
 <div class="text">
   <form action="index.php?page=frontpage/editfrontpageconfirm" method="post">
     <textarea name="words" rows="10" cols="30">
