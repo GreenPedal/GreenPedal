@@ -12,11 +12,13 @@
 	$advertising_query=mysqli_query($dbconnect, $advertising_sql);
 	$advertising_rs=mysqli_fetch_assoc($advertising_query);
 
-	unset($_SESSION['editfrontpage']);
+	unset($_SESSION['frontpage']);
 	
 	$frontpage_sql="SELECT * FROM frontpage";
 	$frontpage_query=mysqli_query($dbconnect, $frontpage_sql);
 	$frontpage_rs=mysqli_fetch_assoc($frontpage_query);
+		
+	unset($_SESSION['Deliverypage']);
   
     $Deliverypage_sql="SELECT * FROM deliverypage";
 	$Deliverypage_query=mysqli_query($dbconnect, $Deliverypage_sql);
@@ -37,9 +39,11 @@
 	 <div class="panel">
 	   <?php do { ?>
        <p>
-		   <a href="index.php?page=application/BackPages/Words/editfrontpage&ID=
-             <?php echo $frontpage_rs['words_ID']; ?>"><?php echo $frontpage_rs['name']; ?>
-		   </a>
+        <h1><?php echo $frontpage_rs['name']; ?></h1></br>
+		 <?php echo $frontpage_rs['words'];?></br>
+         <a href="index.php?page=application/BackPages/Words/editfrontpage&words_ID=<?php echo $frontpage_rs['words_ID']; ?>">
+		    <button type="button" style="top:10px">Change</button>
+		 </a>
        </p>
        <?php } while ($frontpage_rs=mysqli_fetch_assoc($frontpage_query)) ?>
 	 </div>
@@ -47,9 +51,11 @@
 	 <div class="panel">
         <?php do { ?>
         <p>
-          <a href="index.php?page=application/BackPages/Delivery/editDeliverypage&ID=
-           <?php echo $Deliverypage_rs['ID']; ?>"><?php echo $Deliverypage_rs['name']; ?>
-          </a>
+		    <h1><?php echo $Deliverypage_rs['name']; ?></h1></br>
+		    <?php echo $Deliverypage_rs['words']; ?></br>
+	       <a href="index.php?page=application/BackPages/Words/editDeliverypage&ID=<?php echo $Deliverypage_rs['ID']; ?>">
+		    <button type="button" style="top:10px">Change</button>
+		   </a>
         </p>
         <?php } while ($Deliverypage_rs=mysqli_fetch_assoc($Deliverypage_query)) ?>
      </div>
@@ -57,22 +63,23 @@
 	 <div class="panel">
        <?php do { ?>
        <p>
-         <a href="index.php?page=application/BackPages/Advertising/editadvertising&ID=
-          <?php echo $advertising_rs['ID']; ?>"><?php echo $advertising_rs['name']; ?>
-         </a>
+        <h1><?php echo $advertising_rs['name']; ?></h1>
+		<?php echo $advertising_rs['words']; ?></br>
+	       <a href="index.php?page=application/BackPages/Words/editadvertising&ID=<?php echo $advertising_rs['ID']; ?>">
+		    <button type="button" style="top:10px">Change</button>
+		   </a>
        </p>
        <?php } while ($advertising_rs=mysqli_fetch_assoc($advertising_query)) ?>
-       <p>
-         <a href="index.php?page=application/BackPages/Posters/adminPosters">Posters</a>
-       </p>
      </div>
      <button class="accordion"><h1>Events</h1></button>
 	 <div class="panel">
         <?php do { ?>
         <p>
-          <a href="index.php?page=application/BackPages/Events/editEventPage&ID=
-            <?php echo $EventPage_rs['ID']; ?>"><?php echo $EventPage_rs['name']; ?>
-          </a>
+           <h1><?php echo $EventPage_rs['name']; ?></h1>
+		   <?php echo $EventPage_rs['words']; ?>
+	       <a href="index.php?page=application/BackPages/Words/editEventPage&ID=<?php echo $EventPage_rs['ID']; ?>">
+		    <button type="button" style="top:10px">Change</button>
+		   </a>
         </p>
         <?php } while ($EventPage_rs=mysqli_fetch_assoc($EventPage_query)) ?>
         <p>
@@ -95,7 +102,7 @@
           <?php } while ($frontimg_rs=mysqli_fetch_assoc($frontimg_query)) ?>
 	 </div>
      <button class="accordion"><h1>Delivery</h1></button>
-	 <div class="panel">
+	 <div class="imgpanel">
         <?php do { ?>
         <p>
           <a href="index.php?page=application/BackPages/Delivery/editDeliverypage&ID=
@@ -105,7 +112,7 @@
         <?php } while ($Deliverypage_rs=mysqli_fetch_assoc($Deliverypage_query)) ?>
      </div>
      <button class="accordion"><h1>Advertising</h1></button>
-	 <div class="panel">
+	 <div class="imgpanel">
         <?php do { ?>
         <p>
           <a href="index.php?page=application/BackPages/Events/editEventPage&ID=
@@ -115,7 +122,7 @@
         <?php } while ($EventPage_rs=mysqli_fetch_assoc($EventPage_query)) ?>
      </div>
      <button class="accordion"><h1>Events</h1></button>
-	 <div class="panel">
+	 <div class="imgpanel">
         <?php do { ?>
         <p>
           <a href="index.php?page=application/BackPages/Events/editEventPage&ID=
@@ -126,3 +133,34 @@
 
      </div>
 </div>
+  <script>
+      var acc = document.getElementsByClassName("accordion");
+    var i;
+    for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    });
+}
+
+
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+    for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var imgpanel = this.nextElementSibling;
+        if (imgpanel.style.display === "block") {
+            imgpanel.style.display = "none";
+        } else {
+            imgpanel.style.display = "block";
+        }
+    });
+}
+</script>
+

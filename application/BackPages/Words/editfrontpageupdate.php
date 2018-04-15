@@ -2,21 +2,12 @@
 	include("application/DBConnect/dbconnect.php");
   
 	session_start();
-	if(!isset($_SESSION['admin'])) {
-		header("Location:index.php");
-	}
 	
 	
-	$editfrontpage_sql="UPDATE frontpage SET words='".$_SESSION['editfrontpage']['words']."' WHERE words_ID=".$_SESSION['editfrontpage']['words_ID'];
-	$editfrontpage_query=mysqli_query($dbconnect, $editfrontpage_sql);
+	$frontpage_sql="UPDATE frontpage SET words='".$_SESSION['frontpage']['words']."' WHERE words_ID=".$_SESSION['frontpage']['words_ID'];
+	$frontpage_query=mysqli_query($dbconnect, $frontpage_sql);
 	
-	unset($_SESSION['editfrontpage']);
+	unset($_SESSION['frontpage']);
+
+		header("Location:index.php?page=application/Profiles/Admin");
 ?>
-<center>
-<div class="text">
-<p>The frontpage Info is updated..</p>
-<p>
-  <a href="index.php?page=admin">Back to admin panel</a>
-</p>
-</div>
-  </center>

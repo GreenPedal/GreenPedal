@@ -10,13 +10,6 @@
 	$advertising_query=mysqli_query($dbconnect, $advertising_sql);
 	
 	unset($_SESSION['editadvertising']);
-?>
-<center>
+				header("Location:index.php?page=application/Profiles/Admin");
 
-  <div class="text">
-    <p>The Words are updated..</p>
-<p>
-  <a href="index.php?page=admin">Back to admin panel</a>
-</p>
-</div>
-</center>
+?>

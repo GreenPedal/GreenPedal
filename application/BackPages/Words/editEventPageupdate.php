@@ -12,12 +12,6 @@
 	$editEventPage_query=mysqli_query($dbconnect, $editEventPage_sql);
 	
 	unset($_SESSION['editEventPage']);
+			header("Location:index.php?page=application/Profiles/Admin");
+
 ?>
-<center>
-<div class="text">
-<p>The Event Page Info is updated..</p>
-<p>
-  <a href="index.php?page=admin">Back to admin panel</a>
-</p>
-</div>
-  </center>
