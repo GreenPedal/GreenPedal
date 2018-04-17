@@ -16,7 +16,7 @@
     $Businesses_sql="SELECT * FROM businesses";
 	$Businesses_query=mysqli_query($dbconnect, $Businesses_sql);
 	$Businesses_rs=mysqli_fetch_assoc($Businesses_query);
-    $addresses_sql="SELECT * FROM addresses WHERE User_ID='$UserID'";
+    $addresses_sql="SELECT * FROM address WHERE User_ID='$UserID'";
 	$addresses_query=mysqli_query($dbconnect, $addresses_sql);
 	$addresses_rs=mysqli_fetch_assoc($addresses_query);
  }

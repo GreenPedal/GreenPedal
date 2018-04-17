@@ -5,7 +5,7 @@
 		exit;
 	}
 
-	$host = 'localhost';
+$host = 'localhost';
 $user = 'root';
 $pass = '';
 $db = 'GreenPedal';
