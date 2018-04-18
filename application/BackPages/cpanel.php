@@ -33,10 +33,73 @@
 	$frontimg_query=mysqli_query($dbconnect, $frontimg_sql);
 	$frontimg_rs=mysqli_fetch_assoc($frontimg_query);
   ?>
+  <style>
+  .changetab {
+   color:whtie;
+    float: left;
+    border: 1px solid white;
+    background-color: black;
+    width: 20%;
+    height: auto;
+}
+
+.changetab button {
+        display: block;
+        background-color: inherit;
+        color: white;
+        padding: 22px 16px;
+        width: 100%;
+        border: none;
+        outline: none;
+        text-align: left;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 17px;
+    }
+
+.changetab button:hover {
+            background-color: Green;
+        }
+
+.changetab button.active {
+            background-color: forestgreen;
+        }
+
+.changetabcontent {
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 90%;
+    border-left: none;
+    height: auto;
+    margin-left:20px;
+}
+.ChangeContent {
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 90%;
+    border-left: none;
+    height: auto;
+}
+.changeBox{
+    float:left;
+    width:70%;
+
+}
+
+
+  </style>
 <button class="accordion"><h1>Words</h1></button>
 <div class="panel">
-     <button class="accordion"><h1>Frount</h1></button>
-	 <div class="panel">
+	 <div class="changetab">
+	      <button class="changelinks" onclick="openPages(event, 'FrontP')">Front</button>
+	      <button class="changelinks" onclick="openPages(event, 'DeliveryP')">Delivery</button>
+		  <button class="changelinks" onclick="openPages(event, 'AdvertisingP')">Advertising</button>
+		  <button class="changelinks" onclick="openPages(event, 'EventsP')">Events</button>
+	 </div>
+   <div class="changeBox">
+	 <div id="FrontP" class="ChangeContent">
 	   <?php do { ?>
        <p>
         <h1><?php echo $frontpage_rs['name']; ?></h1></br>
@@ -47,8 +110,7 @@
        </p>
        <?php } while ($frontpage_rs=mysqli_fetch_assoc($frontpage_query)) ?>
 	 </div>
-     <button class="accordion"><h1>Delivery</h1></button>
-	 <div class="panel">
+	 <div id="DeliveryP" class="ChangeContent">
         <?php do { ?>
         <p>
 		    <h1><?php echo $Deliverypage_rs['name']; ?></h1></br>
@@ -59,8 +121,7 @@
         </p>
         <?php } while ($Deliverypage_rs=mysqli_fetch_assoc($Deliverypage_query)) ?>
      </div>
-     <button class="accordion"><h1>Advertising</h1></button>
-	 <div class="panel">
+	 <div id="AdvertisingP" class="ChangeContent">
        <?php do { ?>
        <p>
         <h1><?php echo $advertising_rs['name']; ?></h1>
@@ -71,8 +132,7 @@
        </p>
        <?php } while ($advertising_rs=mysqli_fetch_assoc($advertising_query)) ?>
      </div>
-     <button class="accordion"><h1>Events</h1></button>
-	 <div class="panel">
+	 <div id="EventsP" class="ChangeContent">
         <?php do { ?>
         <p>
            <h1><?php echo $EventPage_rs['name']; ?></h1>
@@ -89,6 +149,8 @@
           <a href="index.php?page=application/BackPages/Words/where">Where</a>
         </p>
      </div>
+   </div>
+
 </div>
 <button class="accordion"><h1>Images</h1></button>
 <div class="panel">
@@ -134,6 +196,22 @@
      </div>
 </div>
   <script>
+    function openPages(evt, PageName) {
+    var i, ChangeContent, changelinks;
+    ChangeContent = document.getElementsByClassName("ChangeContent");
+    for (i = 0; i < ChangeContent.length; i++) {
+        ChangeContent[i].style.display = "none";
+    }
+    changelinks = document.getElementsByClassName("changelinks");
+    for (i = 0; i < changelinks.length; i++) {
+        changelinks[i].PageName = changelinks[i].PageName.replace(" active", "");
+    }
+    document.getElementById(openPages).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+  document.getElementById("defaultOpen").click();
+
+
       var acc = document.getElementsByClassName("accordion");
     var i;
     for (i = 0; i < acc.length; i++) {

@@ -13,9 +13,11 @@
     $street = $_POST["route"];
     $town = $_POST["locality"];
 	$Comments = $_POST["Comments"];
+    $AptNumber = $_POST["AptNumber"];
+
 	  }
 
-	$useraddress_sql="INSERT INTO address (User_ID, Name, Number, Street, City, comment) VALUES ('$UserID', '$name', '$number', '$street', '$town', '$Comments')";
+	$useraddress_sql="INSERT INTO address (User_ID, Name, Number, Street, AptNumber, City, comment) VALUES ('$UserID', '$name', '$number', '$street', '$AptNumber', '$town', '$Comments')";
 	$useraddress_query=mysqli_query($mysqli, $useraddress_sql);
         if ($useraddress_query){
 		header("Location:index.php?page=application/Profiles/Admin");

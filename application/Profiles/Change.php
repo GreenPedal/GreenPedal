@@ -21,8 +21,7 @@
   }
   .InfoBox{
   font-size:30px;
-  width:40%;
-  float:left;
+  width:100%;
   color:white;
   }
   greentext{
@@ -150,113 +149,98 @@
         height: 20px;
         margin-bottom: 2px;
       }
+	  #changePic {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+}
     </style>
-	<?php
-	if(!isset($_SESSION['Users'])) {
-		$_SESSION['Users']['first_name']="";
-	} 
-	?>
-
 <body>
    <div style="width:100%;height:auto;">
-      <div style="width:40%;float:left;padding:30;">
+      <div style="width:50%;float:left;padding:10px 100px 10px 10px;">
 	    <center>
 	        <img  width="100%" src="images/User/<?php echo $pic; ?>"</img>
 	 	</center>
 	  </div>
       <div class="mainBoxInfo">
              <div class="InfoBox">
-                <?php echo $first_name;?>
-             </div>
-             <div class="InfoBox">
-                  <?php echo $last_name;?>
+                <?php echo $first_name;?>  <?php echo $last_name;?>
              </div>
              <div style="width:100%;color:white;">
                   <?php echo $email;?>
              </div>
-		 <input type="submit" style="margin-top:10px" name="NewPic" value="Change Image" />
-
       </div>
    </div>
-   <div style="width:100%;height:auto;margin-top:40%;">
-   <?php
-    do { ?>
+   <div style="width:100%;height:auto;margin-top:100px;">
+       <?php do { ?>
 	   <div class="adderessBox">
 		   <button class="accordion">
-		         <?php echo $addresses_rs['Name'];?>
-			     <div style="float:right;width:30%;text-align:right;">
-                   <a href="index.php?page=application/AddOns/DelAddress&ID=<?php echo $addresses_rs['ID']; ?>">	    
-					 <div style="color:red;"><?php echo "Delete";?></div>
-                   </a>
-		         </div>
-                 <div style="width:100%;text-align:left;padding:3px;">
-				     <?php echo $addresses_rs['Number']; ?> <?php echo $addresses_rs['Street']; ?>
-                 </div>
+		           <div style="color:white;"><?php echo $addresses_rs['Name'];?></div>
+			       <div style="float:right;width:30%;text-align:right;">
+                       <a href="index.php?page=application/AddOns/DelAddress&ID=<?php echo $addresses_rs['ID']; ?>">   
+				         <div style="color:red;"><?php echo "Delete" ?></div>
+                       </a>
+				   </div>
+                   <div style="width:100%;text-align:left;padding:3px;">
+				         <?php echo $addresses_rs['Number'];?>   <?php echo $addresses_rs['Street'];?>   <?php 
+					     if ($addresses_rs['AptNumber']) {
+                         ?>Apt  <?php echo $addresses_rs['AptNumber']; 
+                         }else {
+                         } ?>
+                   </div>
 		   </button>
 		   <div class="panel">
 		        <?php echo $addresses_rs['comment']; ?>
 	       </div>
 	   </div>
-   <?php } while ($addresses_rs=mysqli_fetch_assoc($addresses_query)) ?>
-      <button onclick="on()" class="addnewadderess">
-        Add A New Adderess
-      </button>
+       <?php } while ($addresses_rs=mysqli_fetch_assoc($addresses_query)) ?>
+       <button onclick="on()" class="addnewadderess"><center>Add A New Adderess</center></button>
    </div>
-
-
    <div id="overlay">
-   <center>
-      <div style="width:480px;margin-top:15%;">
-	  <form name=addressField  action="index.php?page=application/AddOns/Change" method="post">
-          <div id="locationField">
-            <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
-          </div>
-
-          <table id="address">
-             <tr> 
-
-		  	   <td class="label">Name</td>
-               <td class="wideField"><input class="field" name="name" ></input></td>
-
-            <tr> 
-               <td class="label">Street address</td>
-               <td class="slimField"><input class="field" id="street_number" name="street_number" disabled="true"></input></td>
-               <td class="wideField" colspan="2"><input class="field" id="route" name="route" disabled="true"></input></td>
-            </tr>
-            <tr>
-              <td class="label">City</td>
-                <!-- Note: Selection of address components in this example is typical.
-                You may need to adjust it for the locations relevant to your app. See
-                https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
-                  -->
-              <td class="wideField" colspan="3"><input class="field" id="locality" name="locality" disabled="true"></input></td>
-            </tr>
-            <tr>
-              <td class="label">State</td>
-              <td class="slimField"><input class="field" id="administrative_area_level_1" disabled="true"></input></td>
-              <td class="label">Zip code</td>
-              <td class="wideField"><input class="field" id="postal_code" name="postal_code" disabled="true"></input></td>
-            </tr>
-            </tr>
-              <td class="label">Country</td>
-              <td class="wideField" colspan="3"><input class="field" id="country" name="country" disabled="true"></input></td>
-            </tr>
-            <tr>
-			                <td class="label">Comments</td>
-              <td class="wideField" colspan="3"><input class="field" placeholder="Tells Us if theres a Gate Code or anything we need to know" name="Comments" ></input></td>
-
-            </tr>
-          </table>
-		  <button class="addnewadderess" onclick="off()">Add A Adderess</button>
-		  </form>
-		  <button class="addnewadderess" onclick="off()">go back</button>
-
-       </div>
-	  </center>
+      <center>
+         <div style="width:480px;margin-top:15%;">
+	        <form name=addressField  action="index.php?page=application/AddOns/Change" method="post">
+               <div id="locationField">
+                 <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
+               </div>
+               <table id="address">
+                  <tr> 
+                     <td class="wideField" colspan="3"><input class="field" placeholder="Name This Place" name="name" ></input></td>
+			      </tr>
+                  <tr> 
+                     <td class="slimField"><input class="field" id="street_number" name="street_number" disabled="true"></input></td>
+                     <td class="wideField" colspan="2"><input class="field" id="route" name="route" disabled="true"></input></td>
+                  </tr>
+                  <tr>
+			          <td class="slimField"><input class="field" placeholder="Apt" name="AptNumber" ></input></td>
+                      <td class="wideField" colspan="2"><input class="field" id="locality" name="locality" disabled="true"></input></td>
+                  </tr>
+                  <tr>
+                    <td class="slimField"><input class="field" id="administrative_area_level_1" disabled="true"></input></td>
+                    <td class="wideField"><input class="field" id="postal_code" name="postal_code" disabled="true"></input></td>
+                  </tr>
+                  <tr>
+                    <td class="wideField" colspan="3"><input class="field" id="country" name="country" disabled="true"></input></td>
+                  </tr>
+                  <tr>
+                    <td class="wideField" colspan="3"><input class="field" placeholder="Tells Us if theres a Gate Code or anything we need to know" name="Comments" ></input></td>
+                  </tr>
+               </table>
+		       <button class="addnewadderess" onclick="off()">Add A Adderess</button>
+	        </form>
+	        <button class="addnewadderess" onclick="off()">go back</button>
+         </div>
+      </center>
    </div>
 </body>
-
-
   <script>
   function on() {
     document.getElementById("overlay").style.display = "block";
@@ -337,6 +321,7 @@ var placeSearch, autocomplete;
           });
         }
       }
-    </script>
+</script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxBVM90e_RICT4pWJI_paz7tkVAe4dp0o&libraries=places&callback=initAutocomplete"
-        async defer></script></html>
+        async defer>
+    </script>
