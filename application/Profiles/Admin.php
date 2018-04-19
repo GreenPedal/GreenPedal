@@ -46,10 +46,8 @@
 	   <?php
           } elseif($admin) {
 	   ?> 
-	   <button class="tablinks" onclick="openCity(event, 'AdminDash')" id="defaultOpen">AdminDashBoard</button>
 	   <button class="tablinks" onclick="openCity(event, 'WebSite')">ChangeWebSite</button>
-	   <button class="tablinks" onclick="openCity(event, 'Dispatch')">Dispatch</button>
-	   <button class="tablinks" onclick="openCity(event, 'Add')">Add Something</button>
+
 	   <?php
           }else {
 	   ?> 
@@ -57,8 +55,8 @@
 	   <?php
           }
 	   ?> 
-	   <button class="tablinks" onclick="openCity(event, 'Chagne')">Change Profile</button>
-	   <button class="tablinks" onclick="openCity(event, 'Delivery')">Delivery</button>
+	   <button class="tablinks" onclick="openCity(event, 'Delivery')" id="defaultOpen">Delivery</button>
+	   <button class="tablinks" onclick="openCity(event, 'Chagne')" >Change Profile</button>
        <a href="index.php?page=Login/logout"><button style="border:3px solid red;" class="tablinks" >LogOut</button><a>
      </div>
     </div>
