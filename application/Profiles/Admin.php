@@ -13,12 +13,36 @@
 	$pic = $_SESSION['pic'];
     $promis = $_SESSION['promis'];
 	$admin = $_SESSION['admin'];
-    $Businesses_sql="SELECT * FROM businesses";
-	$Businesses_query=mysqli_query($dbconnect, $Businesses_sql);
-	$Businesses_rs=mysqli_fetch_assoc($Businesses_query);
+
+
     $addresses_sql="SELECT * FROM address WHERE User_ID='$UserID'";
 	$addresses_query=mysqli_query($dbconnect, $addresses_sql);
 	$addresses_rs=mysqli_fetch_assoc($addresses_query);
+
+
+	$PickUp_sql="SELECT * FROM PickUp WHERE User_ID='$UserID'";
+	$PickUp_query=mysqli_query($dbconnect, $PickUp_sql);
+	$PickUp_rs=mysqli_fetch_assoc($PickUp_query);
+
+	$CPickUp_sql="SELECT * FROM PickUp WHERE User_ID='$UserID'";
+	$CPickUp_query=mysqli_query($dbconnect, $CPickUp_sql);
+	$CPickUp_rs=mysqli_fetch_assoc($CPickUp_query);
+
+	$DropOff_sql="SELECT * FROM dropoff WHERE User_ID='$UserID'";
+	$DropOff_query=mysqli_query($dbconnect, $DropOff_sql);
+	$DropOff_rs=mysqli_fetch_assoc($DropOff_query);
+
+	$CDropOff_sql="SELECT * FROM dropoff WHERE User_ID='$UserID'";
+	$CDropOff_query=mysqli_query($dbconnect, $CDropOff_sql);
+	$CDropOff_rs=mysqli_fetch_assoc($CDropOff_query);
+
+	$address_sql="SELECT * FROM address WHERE User_ID='$UserID'";
+	$address_query=mysqli_query($dbconnect, $address_sql);
+	$address_rs=mysqli_fetch_assoc($address_query);
+
+	$adddress_sql="SELECT * FROM address WHERE User_ID='$UserID'";
+	$adddress_query=mysqli_query($dbconnect, $adddress_sql);
+	$adddress_rs=mysqli_fetch_assoc($adddress_query);
  }
 ?>
 <!DOCTYPE html>
@@ -39,6 +63,7 @@
 	 <img  width="100%" src="images/User/<?php echo $pic; ?>"</img>
 	 <h3>Stay Green <?php echo $first_name.' '.$last_name; ?></h3> 
 	 <div class="sidetab">
+	   <button class="tablinks" onclick="openCity(event, 'Delivery')" id="defaultOpen">Delivery</button>
 	   <?php
          if ($promis) {
        ?> 
@@ -55,7 +80,6 @@
 	   <?php
           }
 	   ?> 
-	   <button class="tablinks" onclick="openCity(event, 'Delivery')" id="defaultOpen">Delivery</button>
 	   <button class="tablinks" onclick="openCity(event, 'Chagne')" >Change Profile</button>
        <a href="index.php?page=Login/logout"><button style="border:3px solid red;" class="tablinks" >LogOut</button><a>
      </div>

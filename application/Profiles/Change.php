@@ -1,168 +1,10 @@
 <!DOCTYPE html>
 <html >
-  <style>
-
-  .mainBoxInfo{
-  width:50%;
-  float:left;
-  padding:40;
-  margin-top:10%;
-  
-  }
-  .adderesstext{
-  	  color:green;
-	  margin-top:5%;
-	  width:100%;
-  }
-  .adderessBox{
-  float:left;
-  width:50%;
-  padding:20px;
-  }
-  .InfoBox{
-  font-size:30px;
-  width:100%;
-  color:white;
-  }
-  greentext{
-  color:green;
-  }
-  .accordion {
-    background-color: black;
-    color: green;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-	height:10%;
-    border: 1px sold white;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-    transition: 0.4s;
-  }
-  .addnewadderess {
-    background-color: black;
-    padding:20px;
-    color: green;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-	height:6%;
-    border: 1px sold white;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-    transition: 0.4s;
-  }
-  .active, .addnewadderess:hover {
-    background-color: green; 
-	color:white;
-  }
-
-
-
-  .active, .accordion:hover {
-    background-color: green; 
-	color:white;
-  }
-
-  .panel {
-    padding: 8px 18px;
-    display: none;
-    background-color: black;
-	color:green;
-    overflow: hidden;
-	font-size:20px;
-  }
-  #overlay {
-    position: fixed;
-    display: none;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 2;
-    cursor: pointer;
-}
-
-#text{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 50px;
-    color: black;
-    transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-}
- #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
-    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-    <style>
-	#locationField, #controls {
-        position: relative;
-        width: 480px;
-      }
-      #autocomplete {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-		height:25px;
-        width: 99%;
-		background-color:black;
-      }
-      .label {
-        text-align: right;
-        font-weight: bold;
-        width: 100px;
-        color: white;
-      }
-      #address {
-        border: 1px solid ;
-        background-color: black;
-        width: 480px;
-        padding-right: 2px;
-      }
-      #address td {
-        font-size: 10pt;
-      }
-      .field {
-        width: 99%;
-      }
-      .slimField {
-        width: 80px;
-      }
-      .wideField {
-        width: 200px;
-      }
-      #locationField {
-        height: 20px;
-        margin-bottom: 2px;
-      }
-	  #changePic {
-    position: fixed;
-    display: none;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 2;
-    cursor: pointer;
-}
-    </style>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+	<link href="application/css/Profiles.css" rel="stylesheet" type="text/css" />
+	<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" >
+  </head>
 <body>
    <div style="width:100%;height:auto;">
       <div style="width:50%;float:left;padding:10px 100px 10px 10px;">
@@ -179,7 +21,11 @@
              </div>
       </div>
    </div>
-   <div style="width:100%;height:auto;margin-top:100px;">
+
+  <div style="width:100%;height:auto;margin-top:40%;">
+   
+   <div style="width:30%;height:auto;margin-top:0px; float:right;">
+       <greentext>Food Delivery Address</greentext>
        <?php do { ?>
 	   <div class="adderessBox">
 		   <button class="accordion">
@@ -204,9 +50,65 @@
        <?php } while ($addresses_rs=mysqli_fetch_assoc($addresses_query)) ?>
        <button onclick="on()" class="addnewadderess"><center>Add A New Adderess</center></button>
    </div>
-   <div id="overlay">
+   <div style="width:30%;height:auto;margin-top:0px; float:right;">
+       <greentext>Pick Up Address</greentext>
+       <?php do { ?>
+	   <div class="adderessBox">
+		   <button class="accordion">
+		           <div style="color:white;"><?php echo $CPickUp_rs['Name'];?></div>
+			       <div style="float:right;width:30%;text-align:right;">
+                       <a href="index.php?page=application/AddOns/DelAddress&ID=<?php echo $CPickUp_rs['ID']; ?>">   
+				         <div style="color:red;"><?php echo "Delete" ?></div>
+                       </a>
+				   </div>
+                   <div style="width:100%;text-align:left;padding:3px;">
+				         <?php echo $CPickUp_rs['Number'];?>   <?php echo $CPickUp_rs['Street'];?>   <?php 
+					     if ($CPickUp_rs['AptNumber']) {
+                         ?>Apt  <?php echo $CPickUp_rs['AptNumber']; 
+                         }else {
+                         } ?>
+                   </div>
+		   </button>
+		   <div class="panel">
+		        <?php echo $CPickUp_rs['comment']; ?>
+	       </div>
+	   </div>
+	          <?php } while ($addresses_rs=mysqli_fetch_assoc($addresses_query)) ?>
+   </div>
+   <div style="width:30%;height:auto;margin-top:0px; float:right;">
+       <greentext>Drop Off Address</greentext>
+       <?php do { ?>
+	   <div class="adderessBox">
+		   <button class="accordion">
+		           <div style="color:white;"><?php echo $CDropOff_rs['Name'];?></div>
+			       <div style="float:right;width:30%;text-align:right;">
+                       <a href="index.php?page=application/AddOns/DelAddress&ID=<?php echo $CDropOff_rs['ID']; ?>">   
+				         <div style="color:red;"><?php echo "Delete" ?></div>
+                       </a>
+				   </div>
+                   <div style="width:100%;text-align:left;padding:3px;">
+				         <?php echo $CDropOff_rs['Number'];?>   <?php echo $CDropOff_rs['Street'];?>   <?php 
+					     if ($CDropOff_rs['AptNumber']) {
+                         ?>Apt  <?php echo $CDropOff_rs['AptNumber']; 
+                         }else {
+                         } ?>
+                   </div>
+		   </button>
+		   <div class="panel">
+		        <?php echo $CDropOff_rs['comment']; ?>
+	       </div>
+	   </div>
+	          <?php } while ($CDropOff_rs=mysqli_fetch_assoc($CDropOff_query)) ?>
+   </div>
+  </div>
+
+
+
+
+
+ <div id="overlay">
       <center>
-         <div style="width:480px;margin-top:15%;">
+         <div style="width:600px;margin-top:15%;background-color: black;">
 	        <form name=addressField  action="index.php?page=application/AddOns/Change" method="post">
                <div id="locationField">
                  <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
@@ -231,7 +133,7 @@
                     <td class="wideField" colspan="3"><input class="field" id="country" name="country" disabled="true"></input></td>
                   </tr>
                   <tr>
-                    <td class="wideField" colspan="3"><input class="field" placeholder="Tells Us if theres a Gate Code or anything we need to know" name="Comments" ></input></td>
+                    <td class="wideField" colspan="3"><textarea class="field" placeholder="Tells Us if theres a Gate Code or anything we need to know" name="Comments" ></textarea></td>
                   </tr>
                </table>
 		       <button class="addnewadderess" onclick="off()">Add A Adderess</button>
@@ -239,7 +141,7 @@
 	        <button class="addnewadderess" onclick="off()">go back</button>
          </div>
       </center>
-   </div>
+ </div>
 </body>
   <script>
   function on() {
@@ -249,6 +151,16 @@
 function off() {
     document.getElementById("overlay").style.display = "none";
 }
+
+  function Dropon() {
+    document.getElementById("DropOff").style.display = "block";
+}
+
+function dropoff() {
+    document.getElementById("DropOff").style.display = "none";
+}
+
+
     var acc = document.getElementsByClassName("accordion");
     var i;
     for (i = 0; i < acc.length; i++) {

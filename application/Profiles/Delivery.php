@@ -24,8 +24,6 @@
       }
     </style>
   </head>
-	
-
 
  <h3>Make a Delivery</h3>
           <p>this is where u make a delivery</p>
@@ -48,16 +46,37 @@
 </div>
 	<div id="Other" style="display:none;"class="uptabcontent">
 	    <h3>Other</h3>
-		  <div style="width:100%;height:40%;">
-                  <div id="map"></div>
-        </div>
-    </div>
- 
+		<div style="width:100%;height:30%;">
+			<div style="width:30%;float:left;color:green;">
+              Pick Up Address:
+              <select name="PickUp">
+               <option value="">Select...</option>
+               <?php do { ?>
+               <option ><?php echo $PickUp_rs['Name'];?></option>
+               <?php } while ($PickUp_rs=mysqli_fetch_assoc($PickUp_query)) ?>
+               <?php do { ?>
+               <option ><?php echo $address_rs['Name'];?></option>
+               <?php } while ($address_rs=mysqli_fetch_assoc($address_query)) ?>
+              </select>
+			  <p><a href="index.php?page=application/Pages/BusinessesProfile?>">Add Address</a></p>
+            </div>
 
 
-
-
-
+			<div style="width:30%;float:left;color:green;">
+               Drop Off Address:
+               <select name="DropOff">
+                    <option value="">Select...</option>
+                    <?php do { ?>
+                    <option ><?php echo $DropOff_rs['Name'];?></option>
+                    <?php } while ($DropOff_rs=mysqli_fetch_assoc($DropOff_query)) ?>
+                    <?php do { ?>
+                    <option ><?php echo $adddress_rs['Name'];?></option>
+                    <?php } while ($adddress_rs=mysqli_fetch_assoc($adddress_query)) ?>
+			   </select>
+		       <p><a href="index.php?page=application/Pages/BusinessesProfile?>">Add Address</a></p>
+			</div>
+	    </div>
+   </div>
    <script>
 var customLabel = {
         Pizza: {
