@@ -10,7 +10,6 @@
     $last_name = $_SESSION['last_name'];
     $email = $_SESSION['email'];
     $active = $_SESSION['active'];
-	$pic = $_SESSION['pic'];
     $promis = $_SESSION['promis'];
 	$admin = $_SESSION['admin'];
 
@@ -43,6 +42,10 @@
 	$adddress_sql="SELECT * FROM address WHERE User_ID='$UserID'";
 	$adddress_query=mysqli_query($dbconnect, $adddress_sql);
 	$adddress_rs=mysqli_fetch_assoc($adddress_query);
+
+	$Image_sql="SELECT * FROM users WHERE ID='$UserID'";
+	$Image_query=mysqli_query($dbconnect, $Image_sql);
+	$Image_rs=mysqli_fetch_assoc($Image_query);
  }
 ?>
 <!DOCTYPE html>
@@ -60,7 +63,7 @@
   <div class="proform">
    <center>
     <div class="WalcomName">
-	 <img  width="100%" src="images/User/<?php echo $pic; ?>"</img>
+	 <img  width="100%" src="images/User/<?php echo $Image_rs['pic'];?>"</img>
 	 <h3>Stay Green <?php echo $first_name.' '.$last_name; ?></h3> 
 	 <div class="sidetab">
 	   <button class="tablinks" onclick="openCity(event, 'Delivery')" id="defaultOpen">Delivery</button>
@@ -76,7 +79,6 @@
 	   <?php
           }else {
 	   ?> 
-       <button class="tablinks" onclick="openCity(event, 'Dash')" id="defaultOpen">nothing</button>
 	   <?php
           }
 	   ?> 

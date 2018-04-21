@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html >
+<?php
+	if(!isset($_SESSION['ChagnePic'])) {
+		$_SESSION['ChagnePic']['Pic']="noimage.jpg";
+	} else {
+		if($_SESSION['ChagnePic']['Pic']!="noimage.jpg"){
+			unlink("images/User/".$_SESSION['ChagnePic']['Pic']);
+		}
+	}
+
+?>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
 	<link href="application/css/Profiles.css" rel="stylesheet" type="text/css" />
@@ -9,7 +19,12 @@
    <div style="width:100%;height:auto;">
       <div style="width:50%;float:left;padding:10px 100px 10px 10px;">
 	    <center>
-	        <img  width="100%" src="images/User/<?php echo $pic; ?>"</img>
+	        <img  width="100%" src="images/User/<?php echo $Image_rs['pic'];?>"</img>
+			<button onclick="Imageon()" class="ChangeImage"><center>Change Image</center></button>
+			<a href="index.php?page=application/Profiles/AddOns/ChangePassword">
+			  <button class="ChangeImage"><center>Change Password</center></button>
+			</a>
+		    <button onclick="Addresson()" class="ChangeAddress"><center>Address</center></button>
 	 	</center>
 	  </div>
       <div class="mainBoxInfo">
@@ -22,8 +37,9 @@
       </div>
    </div>
 
-  <div style="width:100%;height:auto;margin-top:40%;">
-   
+
+
+<div id="Address">
    <div style="width:30%;height:auto;margin-top:0px; float:right;">
        <greentext>Food Delivery Address</greentext>
        <?php do { ?>
@@ -31,7 +47,7 @@
 		   <button class="accordion">
 		           <div style="color:white;"><?php echo $addresses_rs['Name'];?></div>
 			       <div style="float:right;width:30%;text-align:right;">
-                       <a href="index.php?page=application/AddOns/DelAddress&ID=<?php echo $addresses_rs['ID']; ?>">   
+                       <a href="index.php?page=application/Profiles/AddOns/DelAddress&ID=<?php echo $addresses_rs['ID']; ?>">   
 				         <div style="color:red;"><?php echo "Delete" ?></div>
                        </a>
 				   </div>
@@ -50,14 +66,15 @@
        <?php } while ($addresses_rs=mysqli_fetch_assoc($addresses_query)) ?>
        <button onclick="on()" class="addnewadderess"><center>Add A New Adderess</center></button>
    </div>
-   <div style="width:30%;height:auto;margin-top:0px; float:right;">
+
+   <div style="width:30%;height:auto;margin-top:30px; float:right;color:green;">
        <greentext>Pick Up Address</greentext>
        <?php do { ?>
 	   <div class="adderessBox">
 		   <button class="accordion">
 		           <div style="color:white;"><?php echo $CPickUp_rs['Name'];?></div>
 			       <div style="float:right;width:30%;text-align:right;">
-                       <a href="index.php?page=application/AddOns/DelAddress&ID=<?php echo $CPickUp_rs['ID']; ?>">   
+                       <a href="index.php?page=application/Profiles/AddOns/CPickUpDel&ID=<?php echo $CPickUp_rs['ID']; ?>">   
 				         <div style="color:red;"><?php echo "Delete" ?></div>
                        </a>
 				   </div>
@@ -73,7 +90,7 @@
 		        <?php echo $CPickUp_rs['comment']; ?>
 	       </div>
 	   </div>
-	          <?php } while ($addresses_rs=mysqli_fetch_assoc($addresses_query)) ?>
+	   <?php } while ($addresses_rs=mysqli_fetch_assoc($addresses_query)) ?>
    </div>
    <div style="width:30%;height:auto;margin-top:0px; float:right;">
        <greentext>Drop Off Address</greentext>
@@ -82,7 +99,7 @@
 		   <button class="accordion">
 		           <div style="color:white;"><?php echo $CDropOff_rs['Name'];?></div>
 			       <div style="float:right;width:30%;text-align:right;">
-                       <a href="index.php?page=application/AddOns/DelAddress&ID=<?php echo $CDropOff_rs['ID']; ?>">   
+                       <a href="index.php?page=application/Profiles/AddOns/DropOffDel&ID=<?php echo $CDropOff_rs['ID']; ?>">   
 				         <div style="color:red;"><?php echo "Delete" ?></div>
                        </a>
 				   </div>
@@ -98,12 +115,22 @@
 		        <?php echo $CDropOff_rs['comment']; ?>
 	       </div>
 	   </div>
-	          <?php } while ($CDropOff_rs=mysqli_fetch_assoc($CDropOff_query)) ?>
+	   <?php } while ($CDropOff_rs=mysqli_fetch_assoc($CDropOff_query)) ?>
    </div>
-  </div>
+</div>
 
-
-
+<div id="Image">
+  <center>
+    <div style="margin-top:20%;width:30%;height:auto;background-color:black;">
+	<div style="color:green;font-size:45px;">Change Your Profile Image</div>
+        <form method="post" action="index.php?page=application/Profiles/AddOns/ChangeImage" enctype="multipart/form-data" >
+         <input type="file" name="fileToUpload" id="fileToUpload" /> </input> 
+         <button type="submit" name="submit" class="addnewadderess" onclick="Imageff()"><center>Chnage Your Pic</center></button>
+        </form>
+        <button class="addnewadderess" onclick="Imageff()"><center>go back</center></button>
+    </div> 
+  </center>
+</div>
 
 
  <div id="overlay">
@@ -113,7 +140,7 @@
                <div id="locationField">
                  <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
                </div>
-               <table id="address">
+               <table id="addaddress">
                   <tr> 
                      <td class="wideField" colspan="3"><input class="field" placeholder="Name This Place" name="name" ></input></td>
 			      </tr>
@@ -142,98 +169,8 @@
          </div>
       </center>
  </div>
+      <?php
+	  include("application/Profiles/AddOns/SCChange.php");
+	 ?>
+
 </body>
-  <script>
-  function on() {
-    document.getElementById("overlay").style.display = "block";
-}
-
-function off() {
-    document.getElementById("overlay").style.display = "none";
-}
-
-  function Dropon() {
-    document.getElementById("DropOff").style.display = "block";
-}
-
-function dropoff() {
-    document.getElementById("DropOff").style.display = "none";
-}
-
-
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-    for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
-        } else {
-            panel.style.display = "block";
-        }
-    });
-}
-var placeSearch, autocomplete;
-      var componentForm = {
-        street_number: 'short_name',
-        route: 'long_name',
-        locality: 'long_name',
-        administrative_area_level_1: 'short_name',
-        country: 'long_name',
-        postal_code: 'short_name'
-      };
-
-      function initAutocomplete() {
-        // Create the autocomplete object, restricting the search to geographical
-        // location types.
-        autocomplete = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-            {types: ['geocode']});
-
-        // When the user selects an address from the dropdown, populate the address
-        // fields in the form.
-        autocomplete.addListener('place_changed', fillInAddress);
-      }
-
-      function fillInAddress() {
-        // Get the place details from the autocomplete object.
-        var place = autocomplete.getPlace();
-
-        for (var component in componentForm) {
-          document.getElementById(component).value = '';
-          document.getElementById(component).disabled = false;
-        }
-
-        // Get each component of the address from the place details
-        // and fill the corresponding field on the form.
-        for (var i = 0; i < place.address_components.length; i++) {
-          var addressType = place.address_components[i].types[0];
-          if (componentForm[addressType]) {
-            var val = place.address_components[i][componentForm[addressType]];
-            document.getElementById(addressType).value = val;
-          }
-        }
-      }
-
-      // Bias the autocomplete object to the user's geographical location,
-      // as supplied by the browser's 'navigator.geolocation' object.
-      function geolocate() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var geolocation = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-            var circle = new google.maps.Circle({
-              center: geolocation,
-              radius: position.coords.accuracy
-            });
-            autocomplete.setBounds(circle.getBounds());
-          });
-        }
-      }
-</script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxBVM90e_RICT4pWJI_paz7tkVAe4dp0o&libraries=places&callback=initAutocomplete"
-        async defer>
-    </script>
