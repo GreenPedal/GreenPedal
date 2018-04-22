@@ -24,6 +24,7 @@
 }
 
 greentext {
+    background-color: black;
     color: green;
 }
 
@@ -114,7 +115,7 @@ greentext {
     z-index: 2;
 }
 #Address {
-    position: fixed;
+    position: absolute;
     display: none;
     width: 100%;
     height: 100%;

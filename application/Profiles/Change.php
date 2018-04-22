@@ -40,7 +40,8 @@
 
 
 <div id="Address">
-   <div style="width:30%;height:auto;margin-top:0px; float:right;">
+<div style=" width:100%; height:100%;   background-color: black;margin-top:30px;">
+   <div style="width:30%;height:auto;margin-top:50px; float:right;">
        <greentext>Food Delivery Address</greentext>
        <?php do { ?>
 	   <div class="adderessBox">
@@ -66,8 +67,7 @@
        <?php } while ($addresses_rs=mysqli_fetch_assoc($addresses_query)) ?>
        <button onclick="on()" class="addnewadderess"><center>Add A New Adderess</center></button>
    </div>
-
-   <div style="width:30%;height:auto;margin-top:30px; float:right;color:green;">
+   <div style="width:30%;height:auto;margin-top:50px; float:right;color:green;">
        <greentext>Pick Up Address</greentext>
        <?php do { ?>
 	   <div class="adderessBox">
@@ -92,7 +92,7 @@
 	   </div>
 	   <?php } while ($addresses_rs=mysqli_fetch_assoc($addresses_query)) ?>
    </div>
-   <div style="width:30%;height:auto;margin-top:0px; float:right;">
+   <div style="width:30%;height:auto;margin-top:50px; float:right;">
        <greentext>Drop Off Address</greentext>
        <?php do { ?>
 	   <div class="adderessBox">
@@ -117,6 +117,10 @@
 	   </div>
 	   <?php } while ($CDropOff_rs=mysqli_fetch_assoc($CDropOff_query)) ?>
    </div>
+   <center>
+      <button class="addnewadderess" style="margin-top:20%;width:20%;" onclick="Addresseff()">go back</button>
+   </center>
+</div>
 </div>
 
 <div id="Image">
