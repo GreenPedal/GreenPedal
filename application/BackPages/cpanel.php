@@ -64,6 +64,15 @@
 .changetab button.active {
             background-color: forestgreen;
         }
+.Cpanel {
+    padding: 8px 18px;
+    display: none;
+    background-color: black;
+    color: green;
+    overflow: hidden;
+    font-size: 20px;
+}
+
 
 .changetabcontent {
     float: left;
@@ -90,23 +99,23 @@
 
 
   </style>
-<button class="accordion"><h1>Words</h1></button>
-<div class="panel">
+<button class="Word"><h1>Words</h1></button>
+<div class="Cpanel">
 	 <div class="changetab">
 	      <button class="changelinks" onclick="openPages(event, 'FrontP')">Front</button>
 	      <button class="changelinks" onclick="openPages(event, 'DeliveryP')">Delivery</button>
 		  <button class="changelinks" onclick="openPages(event, 'AdvertisingP')">Advertising</button>
 		  <button class="changelinks" onclick="openPages(event, 'EventsP')">Events</button>
 	 </div>
-   <div class="changeBox">
+     <div class="changeBox">
 	 <div id="FrontP" class="ChangeContent">
 	   <?php do { ?>
        <p>
         <h1><?php echo $frontpage_rs['name']; ?></h1></br>
-		 <?php echo $frontpage_rs['words'];?></br>
-         <a href="index.php?page=application/BackPages/Words/editfrontpage&words_ID=<?php echo $frontpage_rs['words_ID']; ?>">
+		<?php echo $frontpage_rs['words'];?></br>
+        <a href="index.php?page=application/BackPages/Words/editfrontpage&words_ID=<?php echo $frontpage_rs['words_ID']; ?>">
 		    <button type="button" style="top:10px">Change</button>
-		 </a>
+		</a>
        </p>
        <?php } while ($frontpage_rs=mysqli_fetch_assoc($frontpage_query)) ?>
 	 </div>
@@ -149,10 +158,9 @@
           <a href="index.php?page=application/BackPages/Words/where">Where</a>
         </p>
      </div>
-   </div>
-
+     </div>
 </div>
-<button class="accordion"><h1>Images</h1></button>
+<button class="Image"><h1>Images</h1></button>
 <div class="panel">
      <button class="accordion"><h1>Frount</h1></button>
 	 <div class="imgpanel">
@@ -212,22 +220,22 @@
   document.getElementById("defaultOpen").click();
 
 
-      var acc = document.getElementsByClassName("accordion");
+      var acc = document.getElementsByClassName("Word");
     var i;
     for (i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function() {
         this.classList.toggle("active");
-        var panel = this.nextElementSibling;
-        if (panel.style.display === "block") {
-            panel.style.display = "none";
+        var changelinks = this.nextElementSibling;
+        if (changelinks.style.display === "block") {
+            changelinks.style.display = "none";
         } else {
-            panel.style.display = "block";
+            changelinks.style.display = "block";
         }
     });
 }
 
 
-    var acc = document.getElementsByClassName("accordion");
+    var acc = document.getElementsByClassName("Image");
     var i;
     for (i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function() {

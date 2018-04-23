@@ -9,12 +9,12 @@ if ( $_SESSION['logged_in'] != 1 ) {
 }
 else {
     // Makes it easier to read
-	    $UserID = $_SESSION['ID'];
+	$UserID = $_SESSION['ID'];
+	$hash = $_SESSION['hash'];
     $first_name = $_SESSION['first_name'];
     $last_name = $_SESSION['last_name'];
     $email = $_SESSION['email'];
     $active = $_SESSION['active'];
-	$pic = $_SESSION['pic'];
 	$promis = $_SESSION['promis'];
 	$admin = $_SESSION['admin'];
 

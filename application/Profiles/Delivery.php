@@ -1,28 +1,7 @@
 <head>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <style>
-     
-      #map {
-        width: 70%;
-        height: 30%;
-        float:left;
-      }
-  #mapkey {
-     
-      color:white;
-       background-color:black;
-        width: 30%;
-        height: 30%;
-        float:right;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+	<link href="application/css/Profiles.css" rel="stylesheet" type="text/css" />
   </head>
 
  <h3>Make a Delivery</h3>
@@ -44,7 +23,7 @@
        <div id="mapkey"></div>
     </div>
 </div>
-	<div id="Other" style="display:none;"class="uptabcontent">
+<div id="Other" style="display:none;"class="uptabcontent">
 	    <h3>Other</h3>
 		<div style="width:100%;height:30%;">
 			<div style="width:30%;float:left;color:green;">
@@ -58,10 +37,44 @@
                <option ><?php echo $address_rs['Name'];?></option>
                <?php } while ($address_rs=mysqli_fetch_assoc($address_query)) ?>
               </select>
-			  <p><a href="index.php?page=application/Pages/BusinessesProfile?>">Add Address</a></p>
+		      <button onclick="PcikUpAddressOn()" class="PUButton"><center>Add Address</center></button>
             </div>
-
-
+            <div id="AddPickUpAddress">
+                <center>
+                  <div style="width:600px;margin-top:15%;background-color: black;">
+	                 <form name=addressField  action="index.php?page=application/AddOns/Change" method="post">
+                        <div id="locationField">
+                           <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
+                        </div>
+                        <table id="addaddress">
+                           <tr> 
+                             <td class="wideField" colspan="3"><input class="field" placeholder="Name This Place" name="name" ></input></td>
+			               </tr>
+                           <tr> 
+                             <td class="slimField"><input class="field" id="street_number" name="street_number" disabled="true"></input></td>
+                             <td class="wideField" colspan="2"><input class="field" id="route" name="route" disabled="true"></input></td>
+                           </tr>
+                           <tr>
+			                 <td class="slimField"><input class="field" placeholder="Apt" name="AptNumber" ></input></td>
+                             <td class="wideField" colspan="2"><input class="field" id="locality" name="locality" disabled="true"></input></td>
+                           </tr>
+                           <tr>
+                              <td class="slimField"><input class="field" id="administrative_area_level_1" disabled="true"></input></td>
+                              <td class="wideField"><input class="field" id="postal_code" name="postal_code" disabled="true"></input></td>
+                           </tr>
+                           <tr>
+                              <td class="wideField" colspan="3"><input class="field" id="country" name="country" disabled="true"></input></td>
+                           </tr>
+                           <tr>
+                              <td class="wideField" colspan="3"><textarea class="field" placeholder="Tells Us if theres a Gate Code or anything we need to know" name="Comments" ></textarea></td>
+                           </tr>
+                        </table>
+		                <button class="addnewadderess" onclick="PcikUpAddressOff()">Add A Adderess</button>
+	                 </form>
+	                 <button class="addnewadderess" onclick="PcikUpAddressOff()">go back</button>
+                  </div>
+                </center>
+            </div>
 			<div style="width:30%;float:left;color:green;">
                Drop Off Address:
                <select name="DropOff">
@@ -73,135 +86,11 @@
                     <option ><?php echo $adddress_rs['Name'];?></option>
                     <?php } while ($adddress_rs=mysqli_fetch_assoc($adddress_query)) ?>
 			   </select>
-		       <p><a href="index.php?page=application/Pages/BusinessesProfile?>">Add Address</a></p>
+			   <button onclick="PcikUpAddressOn()" class="PUButton"><center>Add Address</center></button>
 			</div>
 	    </div>
-   </div>
-   <script>
-var customLabel = {
-        Pizza: {
-          label: 'P'
-        },
-        bar: {
-          label: 'B'
-        }
-      };
-
-
-
-        function initMap() {
-         var center =  new google.maps.LatLng(36.600238, -121.894676);
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: center,
-          zoom: 12
-        });
-
-       
-        var infoWindow = new google.maps.InfoWindow;
-
-
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('You are here');
-            infoWindow.open(map);
-            map.setCenter(pos);
-        });
-        }
-
-           // Change this depending on the name of your PHP or XML file
-             downloadUrl('https://greenpedal831.com/markers.php', function(data) {
-            var xml = data.responseXML;
-            var markers = xml.documentElement.getElementsByTagName('marker');
-            Array.prototype.forEach.call(markers, function(markerElem) {
-              var Bus_ID = markerElem.getAttribute('Bus_ID');
-              var name = markerElem.getAttribute('name');
-              var motto = markerElem.getAttribute('motto');
-              var address = markerElem.getAttribute('address');
-              var logo = markerElem.getAttribute('logo');
-              var type = markerElem.getAttribute('type');
-              var point = new google.maps.LatLng(
-                  parseFloat(markerElem.getAttribute('lat')),
-                  parseFloat(markerElem.getAttribute('lng')));
-
-
-          
-
-              var infowincontent = document.createElement('div');
-             
-              
-              var imglogo = document.createElement('img');
-              imglogo.src = "images/BusinessesPics/"+logo;
-              imglogo.width = 75;
-              imglogo.style.cssFloat = "left";
-              imglogo.style.margin = "5px";
-              infowincontent.appendChild(imglogo);
-            
-              
-              var strong = document.createElement('strong');
-              strong.textContent = name
-              infowincontent.appendChild(strong);
-              infowincontent.appendChild(document.createElement('br'));
-
-              var textadd = document.createElement('textadd');
-              textadd.textContent = motto
-              infowincontent.appendChild(textadd);
-              infowincontent.appendChild(document.createElement('br'));
-
-
-              
-
-
-
-              var textadd = document.createElement('textadd');
-              textadd.textContent = address
-              infowincontent.appendChild(textadd);
-             
-                
-              document.getElementById('mapkey').appendChild(infowincontent);
-
-              
-             var icon = customLabel[type] || {};
-              var marker = new google.maps.Marker({
-                map: map,
-                position: point,
-                label: icon.label
-              });
-
-              marker.addListener('click', function() {
-                infoWindow.setContent(infowincontent);
-                infoWindow.open(map, marker);
-              });
-            });
-          });
-        }
-
-
-      function downloadUrl(url, callback) {
-        var request = window.ActiveXObject ?
-            new ActiveXObject('Microsoft.XMLHTTP') :
-            new XMLHttpRequest;
-
-        request.onreadystatechange = function() {
-          if (request.readyState == 4) {
-            request.onreadystatechange = doNothing;
-            callback(request, request.status);
-          }
-        };
-
-        request.open('GET', url, true);
-        request.send(null);
-      }
-
-      function doNothing() {}
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxBVM90e_RICT4pWJI_paz7tkVAe4dp0o&callback=initMap">
-    </script>
+</div>
+<?php
+  include("application/Profiles/AddOns/SCDelivery.php"); 
+?>
   

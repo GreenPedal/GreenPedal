@@ -17,7 +17,7 @@
   </head>
 <body>
    <div style="width:100%;height:auto;">
-      <div style="width:50%;float:left;padding:10px 100px 10px 10px;">
+      <div style="width:50%;float:left;padding:10px 10px 10px 10px;">
 	    <center>
 	        <img  width="100%" src="images/User/<?php echo $Image_rs['pic'];?>"</img>
 			<button onclick="Imageon()" class="ChangeImage"><center>Change Image</center></button>
