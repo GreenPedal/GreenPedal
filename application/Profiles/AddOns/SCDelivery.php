@@ -14,6 +14,15 @@ function off() {
     document.getElementById("overlay").style.display = "none";
 }
 
+function DropOffAddressOn() {
+    document.getElementById("AddDropOffAddress").style.display = "block";
+}
+
+function DropOffAddressOff() {
+    document.getElementById("AddDropOffAddress").style.display = "none";
+}
+
+
 
 
 
@@ -34,7 +43,7 @@ var customLabel = {
          var center =  new google.maps.LatLng(36.600238, -121.894676);
         var map = new google.maps.Map(document.getElementById('map'), {
           center: center,
-          zoom: 12
+          zoom: 8
         });
 
        

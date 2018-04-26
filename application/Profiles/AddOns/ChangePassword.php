@@ -38,6 +38,8 @@ session_start();
           <input type="hidden" name="hash" value="<?= $hash ?>">    
               
           <button class="button button-block"/>Apply</button>
+		  <button style="margin-top:10px;" onclick="ChangePasswordoff()" class="button button-block"/>Go Back</button>
+
           
           </form>
 

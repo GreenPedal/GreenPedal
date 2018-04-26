@@ -35,7 +35,7 @@
 
 #map {
     width: 70%;
-    height: 30%;
+    height: 60%%;
     float: left;
 }
 
@@ -113,6 +113,22 @@ greentext {
     font-size: 15px;
     transition: 0.4s;
 }
+.ChangePassword {
+    margin-top: 10px;
+    background-color: black;
+    padding: 20px;
+    color: green;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    height: 6%;
+    border: 1px sold white;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+}
+
 .ChangeAddress {
     margin-top:10px;
     background-color: black;
@@ -156,6 +172,45 @@ greentext {
     background-color: rgba(0,0,0,0.5);
     z-index: 2;
 }
+#AddDropOffAddress {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+}
+
+#AddAddressPickUp {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+}
+#AddAddressDropOff {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+}
+
+
 #Address {
     position: absolute;
     display: none;
@@ -192,6 +247,19 @@ greentext {
     background-color: rgba(0,0,0,0.5);
     z-index: 2;
 }
+#ChangePassword {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+}
+
 #text {
     position: absolute;
     top: 50%;
