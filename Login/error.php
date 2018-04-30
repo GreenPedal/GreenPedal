@@ -20,7 +20,7 @@ session_start();
     endif;
     ?>
     </p>     
-    <a href="index.php?page=Login/loginidex"><button class="button button-block"/>Back to LogIn</button></a>
+    <button onclick="history.go(-1);" class="button button-block"/>Back</button>
 </div>
 </body>
 </html>

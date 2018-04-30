@@ -61,33 +61,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
           
         <div id="signup" class="tabcontent">   
           <h1>Sign Up for Free</h1>
+		 <p> We will send you an email with a link to finish the the sign up</p>
           
           <form action="index.php?page=Login/loginidex" method="post" autocomplete="off">
-          
-          <div class="top-row">
-            <div class="field-wrap">
-            <div style="color:green">Frist Name<span>*</span></div>
-              <input type="text" required autocomplete="off" name='firstname' />
-            </div>
-        
-            <div class="field-wrap">
-            <div style="color:green">Last Name<span>*</span></div>
-              <input type="text"required autocomplete="off" name='lastname' />
-            </div>
-          </div>
-
+                  
           <div class="field-wrap">
             <div style="color:green">Email Address<span>*</span></div>
             <input type="email"required autocomplete="off" name='email' />
           </div>
-          
-          <div class="field-wrap">
-            
-            <div style="color:green">Set A Password<span>*</span></div>
-            
-            <input type="password"required autocomplete="off" name='password'/>
-          </div>
-          
+                    
           <button type="submit" class="button button-block" name="register" />Register</button>
           
           </form>

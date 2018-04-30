@@ -52,15 +52,18 @@ else { // Email doesn't already exist in a database, proceed...
 
         Please click this link to activate your account:
 
-        https://greenpedal831.com/Login/verify.php?email='.$email.'&hash='.$hash;  
+        https://greenpedal831.com/verify.php?email='.$email.'&hash='.$hash;  
         $con->addAddress($email);
         $con->Subject = $subject;
         $con->AltBody = $message_body;
         $con->Body = $message_body;
 
+        $_SESSION['message'] = 'Check Your Email!';
+        header("location: index.php?page=Login/success");
+
+
 		$con->send();
 
-        header("location: index.php?page=application/Profiles/Cust"); 
 
     }
 

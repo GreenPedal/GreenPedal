@@ -1,3 +1,4 @@
+
 <script>
 function PcikUpAddressOn() {
     document.getElementById("AddPickUpAddress").style.display = "block";
@@ -22,10 +23,15 @@ function DropOffAddressOff() {
     document.getElementById("AddDropOffAddress").style.display = "none";
 }
 
+</script>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxBVM90e_RICT4pWJI_paz7tkVAe4dp0o&signed_in=true&libraries=places&callback=initialize" async defer></script>
 
-
-
+<script>
+	  function initialize() {
+   initMap();
+   initAutoComplete();
+}
 
 
 var customLabel = {
@@ -150,11 +156,6 @@ var customLabel = {
       }
 
       function doNothing() {}
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxBVM90e_RICT4pWJI_paz7tkVAe4dp0o&callback=initMap">
-    </script>
-	    <script>
 
 	    var acc = document.getElementsByClassName("accordion");
     var i;
@@ -229,6 +230,3 @@ var placeSearch, autocomplete;
         }
       }
 </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxBVM90e_RICT4pWJI_paz7tkVAe4dp0o&libraries=places&callback=initAutocomplete"
-        async defer>
-		    </script>

@@ -171,6 +171,3 @@ google.maps.event.addDomListener(window, "load", initAutocomplete);
         }
       }
 </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxBVM90e_RICT4pWJI_paz7tkVAe4dp0o&libraries=places&callback=initAutocomplete"
-        async defer>
-    </script>

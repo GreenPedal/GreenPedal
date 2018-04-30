@@ -10,13 +10,13 @@
 	}
 
 ?>
-  <head>
+<head>
     <meta charset="UTF-8">
-  <?php include 'css/css.html'; ?>
+    <?php include 'css/css.html'; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
 	<link href="application/css/Profiles.css" rel="stylesheet" type="text/css" />
 	<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" >
-  </head>
+</head>
 <body>
    <div style="width:100%;height:auto;">
       <div style="width:50%;float:left;padding:10px 10px 10px 10px;">
@@ -118,7 +118,8 @@
 
 <div id="overlay">
       <center>
-         <div style="width:600px;margin-top:15%;background-color: black;">
+	      <div class="form">
+		    <h1>Add an address that we can deliver your food odder to</h1>
 	        <form name=addressField  action="index.php?page=application/Profiles/AddOns/InsertIntoAddress" method="post">
                <div id="locationField">
                  <input id="DelAddress" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
@@ -146,15 +147,16 @@
                     <td class="wideField" colspan="3"><textarea class="field" placeholder="Tells Us if theres a Gate Code or anything we need to know" name="Comments2" ></textarea></td>
                   </tr>
                </table>
-		       <button class="addnewadderess" onclick="off()">Add A Adderess</button>
+		       <button class="button button-block"  style="margin-top:10px;"  onclick="off()">Add A Adderess</button>
 	        </form>
-	        <button class="addnewadderess" onclick="off()">go back</button>
+	        <button class="button button-block"  style="margin-top:10px;"  onclick="off()">go back</button>
          </div>
       </center>
 </div>
 <div id="AddAddressPickUp">
       <center>
-         <div style="width:600px;margin-top:15%;background-color: black;">
+	      <div class="form">
+		    <h1>Add an address where we can Pick up from</h1>
 	        <form name=addressField  action="index.php?page=application/Profiles/AddOns/ChInsertIntoPickUp" method="post">
                <div id="locationField">
                  <input id="AddPicUp" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
@@ -182,15 +184,16 @@
                     <td class="wideField" colspan="3"><textarea class="field" placeholder="Tells Us if theres a Gate Code or anything we need to know" name="Comments3" ></textarea></td>
                   </tr>
                </table>
-		       <button class="addnewadderess" onclick="AddAddressPickUpoff()">Add A Adderess</button>
+		       <button class="button button-block"  style="margin-top:10px;"  onclick="AddAddressPickUpoff()">Add A Adderess</button>
 	        </form>
-	        <button class="addnewadderess" onclick="AddAddressPickUpoff()">go back</button>
+	        <button class="button button-block"  style="margin-top:10px;"  onclick="AddAddressPickUpoff()">go back</button>
          </div>
       </center>
 </div>
 <div id="AddAddressDropOff">
       <center>
-         <div style="width:600px;margin-top:15%;background-color: black;">
+	      <div class="form">
+		    <h1>Add an address where we can Drop Off to</h1>
 	        <form name=addressField  action="index.php?page=application/Profiles/AddOns/ChInsertIntoDropOff" method="post">
                <div id="locationField">
                  <input id="AddDropOff" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
@@ -218,9 +221,9 @@
                     <td class="wideField" colspan="3"><textarea class="field" placeholder="Tells Us if theres a Gate Code or anything we need to know" name="Comments4" ></textarea></td>
                   </tr>
                </table>
-		       <button class="addnewadderess" onclick="AddAddressDropOffoff()">Add A Adderess</button>
+		       <button class="button button-block"  style="margin-top:10px;" onclick="AddAddressDropOffoff()">Add A Adderess</button>
 	        </form>
-	        <button class="addnewadderess" onclick="AddAddressDropOffoff()">go back</button>
+	        <button class="button button-block"  style="margin-top:10px;" onclick="AddAddressDropOffoff()">go back</button>
          </div>
       </center>
 </div>

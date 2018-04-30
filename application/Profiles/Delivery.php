@@ -40,7 +40,8 @@
             </div>
             <div id="AddPickUpAddress">
                 <center>
-                  <div style="width:600px;margin-top:15%;background-color: black;">
+	              <div class="form">
+				     <h1>Add an address where we can Pick up from</h1>
 	                 <form name=addressField  action="index.php?page=application/Profiles/AddOns/DelInsertIntoPickUp" method="post">
                         <div id="locationField">
                            <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
@@ -68,9 +69,9 @@
                               <td class="wideField" colspan="3"><textarea class="field" placeholder="Tells Us if theres a Gate Code or anything we need to know" name="Comments" ></textarea></td>
                            </tr>
                         </table>
-		                <button class="addnewadderess" onclick="PcikUpAddressOff()">Add A Adderess</button>
+		                <button class="button button-block"  style="margin-top:10px;" onclick="PcikUpAddressOff()">Add A Adderess</button>
 	                 </form>
-	                 <button class="addnewadderess" onclick="PcikUpAddressOff()">go back</button>
+	                 <button class="button button-block"  style="margin-top:10px;" onclick="PcikUpAddressOff()">go back</button>
                   </div>
                 </center>
             </div>
@@ -89,7 +90,8 @@
 			</div>
             <div id="AddDropOffAddress">
                 <center>
-                  <div style="width:600px;margin-top:15%;background-color: black;">
+	               <div class="form">
+				   	 <h1>Add an address where we can Drop Off to</h1>
 	                 <form name=addressField  action="index.php?page=application/Profiles/AddOns/DelInsertIntoDropOff" method="post">
                         <div id="locationField">
                            <input id="CAddDropOff" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
@@ -117,9 +119,9 @@
                               <td class="wideField" colspan="3"><textarea class="field" placeholder="Tells Us if theres a Gate Code or anything we need to know" name="Comments5" ></textarea></td>
                            </tr>
                         </table>
-		                <button class="addnewadderess" onclick="DropOffAddressOff()">Add A Adderess</button>
+		                <button class="button button-block"  style="margin-top:10px;" onclick="DropOffAddressOff()">Add A Adderess</button>
 	                 </form>
-	                 <button class="addnewadderess" onclick="DropOffAddressOff()">go back</button>
+	                 <button class="button button-block"  style="margin-top:10px;" onclick="DropOffAddressOff()">go back</button>
                   </div>
                 </center>
             </div>

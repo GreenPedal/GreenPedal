@@ -20,11 +20,11 @@
 	$addresses_rs=mysqli_fetch_assoc($addresses_query);
 
 
-	$PickUp_sql="SELECT * FROM PickUp WHERE User_ID='$UserID'";
+	$PickUp_sql="SELECT * FROM pickup WHERE User_ID='$UserID'";
 	$PickUp_query=mysqli_query($dbconnect, $PickUp_sql);
 	$PickUp_rs=mysqli_fetch_assoc($PickUp_query);
 
-	$CPickUp_sql="SELECT * FROM PickUp WHERE User_ID='$UserID'";
+	$CPickUp_sql="SELECT * FROM pickup WHERE User_ID='$UserID'";
 	$CPickUp_query=mysqli_query($dbconnect, $CPickUp_sql);
 	$CPickUp_rs=mysqli_fetch_assoc($CPickUp_query);
 

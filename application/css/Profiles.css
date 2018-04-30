@@ -66,7 +66,6 @@
 }
 
 greentext {
-    background-color: black;
     color: green;
 }
 
@@ -283,6 +282,39 @@ greentext {
     width: 100%;
     background-color: black;
 }
+#CAddDropOff {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    height: 40px;
+    width: 100%;
+    background-color: black;
+}
+#AddPicUp {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    height: 40px;
+    width: 100%;
+    background-color: black;
+}
+#DelAddress {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    height: 40px;
+    width: 100%;
+    background-color: black;
+}
+#AddDropOff {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    height: 40px;
+    width: 100%;
+    background-color: black;
+}
+
 
 #addaddress {
     border: 1px solid;
