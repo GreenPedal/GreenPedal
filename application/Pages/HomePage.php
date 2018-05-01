@@ -16,8 +16,6 @@
     <img height="100%" src="images/PagePics/GreenPedal831.jpg" alt="Home" /></img>
   </div>
 </center>
-<fadeleft>Scroll</fadeleft>
-<faderight>Down</faderight>
 <div class="parallax"></div>
 <div class= "GreenBox">
  <div class="compmargin">

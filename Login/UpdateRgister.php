@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if ( $mysqli->query($sql) ) {
 
-        $_SESSION['message'] = "You Did It.. Just sine in and get your delivery!";
+        $_SESSION['message'] = "You Did It.. Just sign in and get your delivery!";
 		        header("location: index.php?page=Login/success");    
 
 

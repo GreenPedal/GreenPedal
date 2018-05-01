@@ -12,9 +12,6 @@
   </div>
 </div>
 
-
-
-
 <div id="Food" class="uptabcontent"style="display:block;">
     <h3>Food</h3>
     <div style="width:100%;height:40%;">

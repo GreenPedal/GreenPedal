@@ -7,20 +7,23 @@
 	$_SESSION['editEventPage']['words']=$_POST['words'];
 ?>
 <head>
-  <link href="application/BackPages/css/style.css" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+  <link href="application/css/Profiles.css" rel="stylesheet" type="text/css" />
+      <?php
+      include 'css/css.html'; 
+    ?>
 </head>
 
 <center>
-<div class="text">
+  <div class="form">
   <h1>Is This Right</h1>
   <p>
     <?php echo $_SESSION['editEventPage']['words']; ?>
   </p>
-</div>
   <p>
-  <a href="index.php?page=application/BackPages/Words/editEventPageupdate"><input type="submit" style="margin-top:10px" name="update" value="Update" /></a> 
-  <a href="index.php?page=application/BackPages/Words/editEventPage"><input type="submit" style="margin-top:10px" name="GoBack" value="GoBack" /></a> 
-  <a href="index.php?page=application/Profiles/Admin"><input type="submit" style="margin-top:10px" name="ToProfile" value="ToProfile" /></a>
+  <a href="index.php?page=application/BackPages/Words/editEventPageupdate"><button type="submit" style="margin-top:8px;" class="button button-block" name="update" value="Update">UpDate</button></a> 
+  <button onclick="history.go(-1);" style="margin-top:8px;" class="button button-block">Back</button>
+  <a href="index.php?page=application/Profiles/Admin"><button type="submit" style="margin-top:8px;" class="button button-block"name="ToProfile" value="ToProfile">Back To Profile</button></a>
 </p>
-
+</div>
   </center>

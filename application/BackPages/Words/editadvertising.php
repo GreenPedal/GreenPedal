@@ -16,17 +16,19 @@
 ?>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-  <link href="application/BackPages/css/style.css" rel="stylesheet" type="text/css" />
+  <link href="application/css/Profiles.css" rel="stylesheet" type="text/css" />
+      <?php
+      include 'css/css.html'; 
+    ?>
 </head>
 <center>
-  <div class="text">
+  <div class="form">
 	<h1>Old Text</h1>
-    <?php echo $_SESSION['editadvertising']['words']; ?>
-  </div>
-  <div class="change">
+    <greentext><?php echo $_SESSION['editadvertising']['words']; ?></greentext>
     <form action="index.php?page=application/BackPages/Words/editadvertisingconfirm" method="post">
-       <textarea name="words" rows="10" cols="30"><?php echo $_SESSION['editadvertising']['words']; ?></textarea></br>
-       <input type="submit" style="margin-top:10px" name="update" value="Update" />
+       <textarea style="margin-top:10px;height:auto;" name="words" rows="10" cols="30"><?php echo $_SESSION['editadvertising']['words']; ?></textarea></br>
+       <button type="submit" class="button button-block" name="update" value="Update">UpDate</button>
     </form>
+	   <button onclick="history.go(-1);" style="margin-top:8px;" class="button button-block">Back</button>
   </div>
 </center>

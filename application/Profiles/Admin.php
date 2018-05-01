@@ -14,6 +14,43 @@
     $promis = $_SESSION['promis'];
 	$admin = $_SESSION['admin'];
 
+	unset($_SESSION['editadvertising']);
+	
+	$what_sql="SELECT * FROM whatweoffer";
+	$what_query=mysqli_query($dbconnect, $what_sql);
+	$what_rs=mysqli_fetch_assoc($what_query);
+  
+  	unset($_SESSION['editwhat']);
+	
+	$advertising_sql="SELECT * FROM advertising";
+	$advertising_query=mysqli_query($dbconnect, $advertising_sql);
+	$advertising_rs=mysqli_fetch_assoc($advertising_query);
+
+	unset($_SESSION['frontpage']);
+	
+	$frontpage_sql="SELECT * FROM frontpage";
+	$frontpage_query=mysqli_query($dbconnect, $frontpage_sql);
+	$frontpage_rs=mysqli_fetch_assoc($frontpage_query);
+		
+	unset($_SESSION['Deliverypage']);
+  
+    $Deliverypage_sql="SELECT * FROM deliverypage";
+	$Deliverypage_query=mysqli_query($dbconnect, $Deliverypage_sql);
+	$Deliverypage_rs=mysqli_fetch_assoc($Deliverypage_query);
+  
+    $EventPage_sql="SELECT * FROM  eventpage";
+	$EventPage_query=mysqli_query($dbconnect, $EventPage_sql);
+	$EventPage_rs=mysqli_fetch_assoc($EventPage_query);
+
+	
+	$frontimg_sql="SELECT * FROM images";
+	$frontimg_query=mysqli_query($dbconnect, $frontimg_sql);
+	$frontimg_rs=mysqli_fetch_assoc($frontimg_query);
+
+
+	$Phone_sql="SELECT * FROM users WHERE ID='$UserID'";
+	$Phone_query=mysqli_query($dbconnect, $Phone_sql);
+	$Phone_rs=mysqli_fetch_assoc($Phone_query);
 
     $addresses_sql="SELECT * FROM address WHERE User_ID='$UserID'";
 	$addresses_query=mysqli_query($dbconnect, $addresses_sql);
@@ -105,7 +142,7 @@
    </div>
    <div id="WebSite" class="sidetabcontent">
      <?php
-	  include("application/BackPages/cpanel.php")
+	  include("application/Profiles/ChangeWebsite.php")
 	 ?>
    </div>
    <div id="Chagne" class="sidetabcontent">

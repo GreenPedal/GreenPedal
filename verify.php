@@ -124,7 +124,7 @@ button:hover {
 	<p><select name="PhoneCarrier">
 	    <option value="">Phone Carrier...</option>
         <?php do { ?>
-        <option ><?php echo $PhoneCarrier_rs['ID']; echo $PhoneCarrier_rs['PhoneCarrierName'];?></option>
+        <option ><?php echo $PhoneCarrier_rs['PhoneCarrierName'];?></option>
         <?php } while ($PhoneCarrier_rs=mysqli_fetch_assoc($PhoneCarrier_query)) ?>
 	</select></p>
   </div>

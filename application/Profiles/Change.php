@@ -30,10 +30,16 @@
       <div class="mainBoxInfo">
              <div class="InfoBox">
                 <?php echo $first_name;?>  <?php echo $last_name;?>
+
              </div>
              <div style="width:100%;color:white;">
                   <?php echo $email;?>
              </div>
+			 <div style="width:100%;color:white;margin-top:10px;">
+                  <?php echo $Phone_rs['phone'];?>
+				  </br><?php echo $Phone_rs['PhoneCarrier'];?>
+             </div>
+
       </div>
    </div>
 

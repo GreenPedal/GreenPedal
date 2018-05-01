@@ -35,7 +35,7 @@
 
 #map {
     width: 70%;
-    height: 60%%;
+    height: 60%;
     float: left;
 }
 
@@ -67,6 +67,7 @@
 
 greentext {
     color: green;
+    font-size: large;
 }
 
 .accordion {
@@ -209,6 +210,43 @@ greentext {
     z-index: 2;
 }
 
+.changewordtab {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: black;
+    width: 30%;
+    height: 300px;
+}
+.changewordtab button {
+        display: block;
+        background-color: inherit;
+        color: white;
+        padding: 22px 16px;
+        width: 100%;
+        border: none;
+        outline: none;
+        text-align: left;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 17px;
+    }
+.changewordtab button:hover {
+            background-color: green;
+            color: black;
+        }
+.changewordtab button.active {
+            background-color: #006400;
+            color: black;
+        }
+.ChangewordContent {
+    color: green;
+    float: left;
+    padding: 0px 12px;
+    border: 1px solid #ccc;
+    width: 70%;
+    border-left: none;
+    height: auto;
+}
 
 #Address {
     position: absolute;
