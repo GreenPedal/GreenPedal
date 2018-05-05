@@ -1,8 +1,5 @@
 <?php
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$db = 'greenpedal';
+	include("application/DBConnect/dbconnect.php");
 
 
 	$dbcon = mysqli_connect($host, $user, $pass, $db);
@@ -47,6 +44,7 @@ while ($row = mysqli_fetch_assoc($Businesses_query)){
   echo 'lat="' . $row['lat'] . '" ';
   echo 'lng="' . $row['lng'] . '" ';
   echo 'type="' . $row['type'] . '" ';
+  echo 'website="' . $row['website'] . '" ';
   echo '/>';
   $ind = $ind + 1;
 }

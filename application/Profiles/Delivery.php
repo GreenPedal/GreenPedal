@@ -4,11 +4,11 @@
 	<link href="application/css/Profiles.css" rel="stylesheet" type="text/css" />
   </head>
  <h3>Make a Delivery</h3>
-          <p>this is where u make a delivery</p>
+          <p>You can choose between a resturant you want to oder form or a custom delivery where you pick something up and delivery it where ever you want us to</p>
 <div class="buttoncont">
   <div class="uptab">
 	 <button class="uptablinks" onclick="openDelivery(event, 'Food')">Food Delivery</button>
-	 <button class="uptablinks" onclick="openDelivery(event, 'Other')">Other Delivery</button>
+	 <button class="uptablinks" onclick="openDelivery(event, 'Other')">Custom Delivery</button>
   </div>
 </div>
 
@@ -20,7 +20,7 @@
     </div>
 </div>
 <div id="Other" style="display:none;"class="uptabcontent">
-	    <h3>Other</h3>
+	    <h3>Custom</h3>
 		<div style="width:100%;height:30%;">
 			<div style="width:30%;float:left;color:green;">
               Pick Up Address:

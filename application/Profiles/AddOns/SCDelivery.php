@@ -83,6 +83,7 @@ var customLabel = {
               var address = markerElem.getAttribute('address');
               var logo = markerElem.getAttribute('logo');
               var type = markerElem.getAttribute('type');
+              var website = markerElem.getAttribute('website');
               var point = new google.maps.LatLng(
                   parseFloat(markerElem.getAttribute('lat')),
                   parseFloat(markerElem.getAttribute('lng')));
@@ -110,11 +111,6 @@ var customLabel = {
               textadd.textContent = motto
               infowincontent.appendChild(textadd);
               infowincontent.appendChild(document.createElement('br'));
-
-
-              
-
-
 
               var textadd = document.createElement('textadd');
               textadd.textContent = address
