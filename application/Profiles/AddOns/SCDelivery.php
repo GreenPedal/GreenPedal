@@ -22,6 +22,13 @@ function DropOffAddressOn() {
 function DropOffAddressOff() {
     document.getElementById("AddDropOffAddress").style.display = "none";
 }
+function CustomOn() {
+    document.getElementById("Custom").style.display = "block";
+}
+
+function CustomOff() {
+    document.getElementById("Custom").style.display = "none";
+}
 
 
 </script>
