@@ -9,7 +9,10 @@
         $DropOff = $_SESSION['DropOff'];
         $DropPerson = $_SESSION['DropPerson'];
         $DecItem = $_SESSION['DecItem'];
-
+        $PickTime = $_SESSION['PickTime'];
+        $DropTime = $_SESSION['DropTime'];
+        date_default_timezone_set("America/Los_Angeles");
+		$date = date("m-d-Y h:ia");
 
 	    if ($PickUp >"0" AND $DropOff >"0") {
 	      $PickUpsend_sql="SELECT * FROM pickup WHERE Name='$PickUp' AND User_ID='$UserID'";
@@ -35,8 +38,9 @@
 	      $DCity = $PickUpsend_rs['City'];
 	      $DZip = $PickUpsend_rs['Zip'];
 	      $Dcomment = $PickUpsend_rs['comment'];
+		  $date = date("Y/m/d");
 
-	      $CSAdress_sql="INSERT INTO customdelivery (User_ID, PickAdressNumber, PickStreet, PickAptNumber, PickZip, PickCity, Pickcomment, DropAdressNumber, DropStreet, DropAptNumber, DropZip, DropCity, Dropcomment) VALUES ('$UserID',  '$PNumber', '$PStreet', '$PApt', '$PZip', '$PCity',  '$Pcomment', '$DNumber', '$DStreet', '$DApt', '$DZip', '$DCity',  '$Dcomment')";
+	      $CSAdress_sql="INSERT INTO customdelivery (User_ID, DandTmade, PickTime, DropTime, PickAdressNumber, PickStreet, PickAptNumber, PickZip, PickCity, Pickcomment, DropAdressNumber, DropStreet, DropAptNumber, DropZip, DropCity, Dropcomment) VALUES ('$UserID', '$date', '$PickTime', '$DropTime',  '$PNumber', '$PStreet', '$PApt', '$PZip', '$PCity',  '$Pcomment', '$DNumber', '$DStreet', '$DApt', '$DZip', '$DCity',  '$Dcomment')";
 	      $CSAdress_query=mysqli_query($mysqli, $CSAdress_sql);
 		} elseif ($PickUp <"0" AND $DropOff <"0") {
   	          $name = $_SESSION["name"];
@@ -57,7 +61,7 @@
 	          $Comments5 = $_SESSION["Comments5"];
               $State5 = $_SESSION["State5"];
               $AptNumber5 = $_SESSION["AptNumber5"];
-	          $CAddress_sql="INSERT INTO customdelivery (User_ID, PickAdressNumber, PickStreet, PickAptNumber, PickZip, PickCity, Pickcomment, DropAdressNumber, DropStreet, DropAptNumber, DropZip, DropCity, Dropcomment) VALUES ('$UserID', '$street_number', '$route', '$AptNumber', '$zip', '$town',  '$Comments', '$street_number5', '$route5', '$AptNumber5', '$zip5', '$town5',  '$Comments5')";
+	          $CAddress_sql="INSERT INTO customdelivery (User_ID, DandTmade, PickTime, DropTime, PickAdressNumber, PickStreet, PickAptNumber, PickZip, PickCity, Pickcomment, DropAdressNumber, DropStreet, DropAptNumber, DropZip, DropCity, Dropcomment) VALUES ('$UserID', '$date', '$PickTime', '$DropTime', '$street_number', '$route', '$AptNumber', '$zip', '$town',  '$Comments', '$street_number5', '$route5', '$AptNumber5', '$zip5', '$town5',  '$Comments5')";
 	          $CAddress_query=mysqli_query($mysqli, $CAddress_sql);
 	          $useraddress_sql="INSERT INTO pickup (User_ID, Name, Number, Street, AptNumber, Zip, City, comment) VALUES ('$UserID', '$name', '$street_number', '$route', '$AptNumber', '$zip', '$town',  '$Comments')";
 	          $useraddress_query=mysqli_query($mysqli, $useraddress_sql);
@@ -90,7 +94,7 @@
 	      $DZip = $DropOffsend_rs['Zip'];
 	      $Dcomment = $DropOffsend_rs['comment'];
 
-	      $CSAdress_sql="INSERT INTO customdelivery (User_ID, PickAdressNumber, PickStreet, PickAptNumber, PickZip, PickCity, Pickcomment, DropAdressNumber, DropStreet, DropAptNumber, DropZip, DropCity, Dropcomment) VALUES ('$UserID', '$street_number', '$route', '$AptNumber', '$zip', '$town',  '$Comments', '$DNumber', '$DStreet', '$DApt', '$DZip', '$DCity',  '$Dcomment')";
+	      $CSAdress_sql="INSERT INTO customdelivery (User_ID, DandTmade, PickTime, DropTime, PickAdressNumber, PickStreet, PickAptNumber, PickZip, PickCity, Pickcomment, DropAdressNumber, DropStreet, DropAptNumber, DropZip, DropCity, Dropcomment) VALUES ('$UserID', '$date', '$PickTime', '$DropTime', '$street_number', '$route', '$AptNumber', '$zip', '$town',  '$Comments', '$DNumber', '$DStreet', '$DApt', '$DZip', '$DCity',  '$Dcomment')";
 	      $CSAdress_query=mysqli_query($mysqli, $CSAdress_sql);
 
 	      $useraddress_sql="INSERT INTO pickup (User_ID, Name, Number, Street, AptNumber, Zip, City, comment) VALUES ('$UserID', '$name', '$street_number', '$route', '$AptNumber', '$zip', '$town',  '$Comments')";
@@ -122,7 +126,7 @@
           $AptNumber5 = $_SESSION["AptNumber5"];
 
 
-	      $CAddress_sql="INSERT INTO customdelivery (User_ID, PickAdressNumber, PickStreet, PickAptNumber, PickZip, PickCity, Pickcomment, DropAdressNumber, DropStreet, DropAptNumber, DropZip, DropCity, Dropcomment) VALUES ('$UserID',  '$PNumber', '$PStreet', '$PApt', '$PZip', '$PCity',  '$Pcomment', '$street_number5', '$route5', '$AptNumber5', '$zip5', '$town5',  '$Comments5')";
+	      $CAddress_sql="INSERT INTO customdelivery (User_ID, DandTmade, PickTime, DropTime, PickAdressNumber, PickStreet, PickAptNumber, PickZip, PickCity, Pickcomment, DropAdressNumber, DropStreet, DropAptNumber, DropZip, DropCity, Dropcomment) VALUES ('$UserID', '$date', '$PickTime', '$DropTime', '$PNumber', '$PStreet', '$PApt', '$PZip', '$PCity',  '$Pcomment', '$street_number5', '$route5', '$AptNumber5', '$zip5', '$town5',  '$Comments5')";
 	      $CAddress_query=mysqli_query($mysqli, $CAddress_sql);
 	      $DropOffAdress_sql="INSERT INTO dropoff (User_ID, Name, Number, Street, AptNumber, Zip, City, comment) VALUES ('$UserID', '$name5', '$street_number5', '$route5', '$AptNumber5', '$zip5', '$town5',  '$Comments5')";
 	      $DropOffAdress_query=mysqli_query($mysqli, $DropOffAdress_sql);
@@ -141,3 +145,4 @@
   <a href="index.php?page=application/Profiles/Admin"><button class="button button-block" type="submit" style="margin-top:10px;">Go Back To Profile</button></a>
   </div>
 </body>
+dm,n,dfnasdf

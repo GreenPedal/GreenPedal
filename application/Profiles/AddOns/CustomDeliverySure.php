@@ -11,6 +11,8 @@
         $_SESSION['DropOff'] = $_POST["DropOff"];
         $_SESSION['DropPerson'] = $_POST["DropPerson"];
         $_SESSION['DecItem'] = $_POST["DecItem"];
+        $_SESSION['PickTime'] = $_POST["PickTime"];
+        $_SESSION['DropTime'] = $_POST["DropTime"];
 
 		$PickUp = $_POST['PickUp'];
         $DropOff = $_POST["DropOff"];
@@ -25,9 +27,8 @@
 
 	  $NUmber = $PickUpsend_rs['ID'];
       $DropNumber = $DropOffsend_rs['ID'];
-        $_SESSION['PickID'] = $NUmber;
-        $_SESSION['DropID'] = $DropNumber;
-		echo $UserID;
+      $_SESSION['PickID'] = $NUmber;
+      $_SESSION['DropID'] = $DropNumber;
     ?>
 	<link href="application/css/Profiles.css" rel="stylesheet" type="text/css" />
 </head>
@@ -157,7 +158,17 @@
 		   } 
 		?>
     </table>
+
+
     <table id="addaddress">
+    	<tr>
+		   <td class="slimField"><greentext>PickUp</greentext></td>
+           <td class="wideField" colspan="1"><input placeholder="<?php echo $_SESSION['PickTime'];?>" class="field" disabled="true"></input></td>
+        </tr>
+    	<tr>
+		   <td class="slimField"><greentext>DropOff</greentext></td>
+           <td class="wideField" colspan="1"><input placeholder="<?php echo $_SESSION['DropTime'];?>" class="field" disabled="true"></input></td>
+        </tr>
     	<tr>
 		   <td class="slimField"><greentext>Item number</greentext></td>
            <td class="wideField" colspan="1"><input placeholder="<?php echo $_SESSION['ItemNumber'];?>" class="field" disabled="true"></input></td>
