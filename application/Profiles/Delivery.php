@@ -29,7 +29,7 @@
 	   <div style="width:100%;height:auto;">
 	      <form  action="index.php?page=application/Profiles/AddOns/CustomDeliverySure" method="post">
 		      <div style="width:45%;float:left;">
-                          <div class="form" style="margin:10px;"><h2>Saved pick up address:</h2></br>
+                          <div class="form" style="margin:10px;"><h2>Saved PickUp </br> Address:</h2></br>
                              <table id="addaddress">
 						      <tr>
                                <td class="wideField" colspan="3"><select class="field" name="PickUp">                           
@@ -48,7 +48,8 @@
                               </tr>
 							 </table>
 			              </div>
-	                      <div class="form">
+                          <div class="form">
+						      <h2>Add A PickUp Address</h2>
                               <table id="addaddress">
 						           <tr>
                                       <td class="wideField" colspan="3"><input class="field"  id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input></td>
@@ -78,13 +79,10 @@
                           </div>
 			              <div class="form">
                               <table id="addaddress">
-                                <h2>Who are we Picking it from:</h2>
-                                <tr>
-                                  <td class="wideField" colspan="3"><input class="field" name="PickPerson" type="text" style="height:10%;"></input></td>
-				                </tr>
-                              </table>
-                              <table id="addaddress">
-				                  <h2>What time would you want us to pick it up:
+				                  <h2>What date and time would you want us to pick it up:
+				                  <tr>
+					                 <td class="wideField" colspan="3"><input name="Pickdate" class="field" type="date" /></td>
+                                  </tr>
 				                  <tr>
 					                 <td class="wideField" colspan="3"><input name="PickTime" class="field" type="time" /></td>
                                   </tr>
@@ -93,7 +91,7 @@
 		      </div>
 		  <div style="width:10%;height:10px;float:left;color:green;"></div>
 		  <div style="width:45%;float:left;color:green;">
-                       <div class="form" style="margin:10px;"><h2>Saved dropOff address:</h2></br>
+                       <div class="form" style="margin:10px;"><h2>Saved DropOff </br> Address:</h2></br>
                          <table id="addaddress">
 						  <tr>
                            <td class="wideField" colspan="3"><select class="field" name="DropOff">
@@ -109,6 +107,7 @@
 						 </table>
 					   </div>
 	                 <div class="form">
+						<h2>Add A DropOff Address</h2>
                         <table id="addaddress">
                            <tr> 
                              <td class="wideField" colspan="2"><input class="field" id="CAddDropOff" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
@@ -138,13 +137,10 @@
                      </div>
 			       <div class="form">
                       <table id="addaddress">
-                        <h2>Who are we Dropping off to:</h2>
-                        <tr>
-                          <td class="wideField" colspan="3"><input name="DropPerson" class="field" type="text" style="height:10%;"></input></td>
-				        </tr>
-                      </table>
-                      <table id="addaddress">
-				        <h2>What time would you want us to Drop it off:
+				        <h2>What date and time would you want us to Drop it off:
+				        <tr>
+					      <td class="wideField" colspan="3"><input name="Dropdate" class="field" type="date" /></td>
+                        </tr>
 				        <tr>
 					      <td class="wideField" colspan="3"><input name="DropTime" class="field" type="time" /></td>
                         </tr>
